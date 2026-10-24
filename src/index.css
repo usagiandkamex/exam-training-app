@@ -71,7 +71,7 @@ main { padding-bottom: 48px; }
 .choices { display: flex; flex-direction: column; gap: 12px; }
 .choice { border: 1px solid var(--colorNeutralStroke1); border-radius: 10px; padding: 8px 12px; transition: background-color .15s; }
 .choice:hover { background: var(--colorNeutralBackground1Hover); }
-.choice:has(input:checked) { border-color: var(--colorBrandStroke1); background: var(--colorBrandBackground2); }
+.choice:not(.is-correct, .is-wrong):has(input:checked) { border-color: var(--colorBrandStroke1); background: var(--colorBrandBackground2); }
 .choice > :first-child { width: 100%; }
 .choice label { line-height: 1.7; padding-block: 10px; color: var(--colorNeutralForeground1); }
 .choice input:disabled ~ label { color: var(--colorNeutralForeground1); }
