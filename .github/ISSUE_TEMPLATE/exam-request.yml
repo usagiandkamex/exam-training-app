@@ -1,0 +1,51 @@
+name: 試験の追加リクエスト
+description: 対象試験と公式情報を指定して問題集をリクエストします。
+title: "[試験追加] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        実際の試験問題、記憶から再現した問題、ダンプ、公式練習問題のコピーは投稿しないでください。
+        問題は公式の学習要領・技術資料を参考に独自作成します。
+  - type: input
+    id: exam
+    attributes:
+      label: 試験名・試験コード
+      placeholder: 例：Microsoft DP-300
+    validations:
+      required: true
+  - type: input
+    id: language
+    attributes:
+      label: 希望する言語
+      value: 日本語
+    validations:
+      required: true
+  - type: textarea
+    id: blueprint
+    attributes:
+      label: 公式の学習要領・分野と出題比率
+      description: 公式URLと、対象となる版・改訂日を記載してください。不明な項目は不明としてください。
+    validations:
+      required: true
+  - type: textarea
+    id: count
+    attributes:
+      label: 本番の問題数と根拠
+      description: 公式URLを記載してください。範囲がある場合は上限の5倍以上の独自問題を準備します。
+    validations:
+      required: true
+  - type: textarea
+    id: terms
+    attributes:
+      label: 利用条件・受験者契約などの公式URL
+      description: 公開されている資料でも転載できるとは限りません。不明の場合は調査が必要と記載してください。
+    validations:
+      required: true
+  - type: checkboxes
+    id: content-policy
+    attributes:
+      label: 公開コンテンツの確認
+      options:
+        - label: 実際の試験問題、秘密情報、個人情報、権利上問題のある内容を投稿していません。
+          required: true

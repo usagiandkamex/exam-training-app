@@ -104,12 +104,17 @@ test('empty banks, empty choices, missing sources and all-correct choices are re
 })
 
 test('references must use exact allowlisted official HTTPS hosts, without credentials', () => {
+  const usernameUrl = new URL('https://learn.microsoft.com/')
+  usernameUrl.username = 'example'
+  const passwordUrl = new URL('https://learn.microsoft.com/')
+  passwordUrl.password = 'example'
   for (const url of [
     'javascript:alert(1)',
     'http://learn.microsoft.com/example',
     'https://learn.microsoft.com.evil.example/',
     'https://evil.example/learn.microsoft.com',
-    '******learn.microsoft.com/',
+    usernameUrl.toString(),
+    passwordUrl.toString(),
     'https://learn.microsoft.com:8443/',
     'not a URL',
   ]) {

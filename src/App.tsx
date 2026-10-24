@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import {
-  Badge, Button, Card, Checkbox, Field, Link, MessageBar, MessageBarBody,
+  Badge, Button, Card, Checkbox, Dialog, DialogActions, DialogBody, DialogContent,
+  DialogSurface, DialogTitle, DialogTrigger, Field, Link, MessageBar, MessageBarBody,
   ProgressBar, Radio, RadioGroup, Select,
 } from '@fluentui/react-components'
 import { exams } from './data/catalog.ts'
@@ -9,7 +10,7 @@ import { createSession, getStats, nextQuestion, submitAnswer } from './lib/quiz.
 import type { Session } from './lib/quiz.ts'
 import { ContentPolicy } from './components/ContentPolicy.tsx'
 
-const requestUrl = 'https://github.com/usagiandkamex/exam-traing-app/issues/new?template=exam-request.yml'
+const requestUrl = 'https://github.com/usagiandkamex/exam-training-app/issues/new?template=exam-request.yml'
 
 function ExamBadge({ exam }: { exam: Exam }) {
   return <Badge appearance="tint" color={exam.kind === 'demo' ? 'warning' : 'brand'}>
@@ -126,11 +127,10 @@ function Explanation({ question }: { question: Question }) {
   </div>
 }
 
-function Quiz({ exam, session, onAnswer, onNext, onExit }: {
-  exam: Exam; session: Session; onAnswer: (ids: string[]) => void; onNext: () => void; onExit: () => void
+function Quiz({ exam, session, onAnswer, onNext }: {
+  exam: Exam; session: Session; onAnswer: (ids: string[]) => void; onNext: () => void
 }) {
   const [selected, setSelected] = useState<string[]>([])
-  const [confirmExit, setConfirmExit] = useState(false)
   const heading = useRef<HTMLHeadingElement>(null)
   const feedback = useRef<HTMLDivElement>(null)
   const question = session.questions[session.index]
@@ -141,13 +141,8 @@ function Quiz({ exam, session, onAnswer, onNext, onExit }: {
 
   return <div className="quiz-shell">
     <div className="quiz-topline"><div><p className="eyebrow">{exam.title}</p><ExamBadge exam={exam} /></div>
-      <Button appearance="subtle" onClick={() => setConfirmExit(true)}>学習を終了</Button>
+      <DialogTrigger disableButtonEnhancement><Button appearance="subtle">学習を終了</Button></DialogTrigger>
     </div>
-    {confirmExit && <Card role="region" aria-label="終了の確認">
-      <p>学習を終了して選択画面に戻りますか？ 現在の回答は保存されません。</p>
-      <div className="button-row"><Button appearance="primary" onClick={onExit}>終了して戻る</Button>
-        <Button onClick={() => setConfirmExit(false)}>学習を続ける</Button></div>
-    </Card>}
     <Stats session={session} />
     <ProgressBar value={session.answers.length} max={session.questions.length} aria-label="回答の進捗" />
     <Card className="question-card">
@@ -244,7 +239,8 @@ export default function App() {
     requestAnimationFrame(() => homeHeading.current?.focus())
   }
 
-  return <div className="app-shell">
+  // Keep the dialog mounted across screen changes so focus isolation is released.
+  return <Dialog inertTrapFocus><div className="app-shell">
     <a className="skip-link" href="#main">本文へスキップ</a>
     <header className="site-header">
       <a className="brand" href="#main" onClick={(event) => {
@@ -260,12 +256,23 @@ export default function App() {
         onReset={reset} onRestart={() => setPractice((current) => current && ({
           ...current, session: createSession(current.exam, current.domains, current.limit),
         }))} /> : <Quiz key={practice.session.questions[practice.session.index].id}
-        exam={practice.exam} session={practice.session} onExit={reset}
+        exam={practice.exam} session={practice.session}
         onAnswer={(ids) => setPractice((current) => current && ({ ...current, session: submitAnswer(current.session, ids) }))}
         onNext={() => setPractice((current) => current && ({ ...current, session: nextQuestion(current.session) }))} />}
     </main>
     <ContentPolicy />
     <footer className="site-footer"><span>試験対策ラボ · 非公式の学習支援アプリ</span>
-      <Link href="https://github.com/usagiandkamex/exam-traing-app" target="_blank" rel="noopener noreferrer">GitHub（別タブ） ↗</Link></footer>
+      <Link href="https://github.com/usagiandkamex/exam-training-app" target="_blank" rel="noopener noreferrer">GitHub（別タブ） ↗</Link></footer>
   </div>
+    <DialogSurface>
+      <DialogBody>
+        <DialogTitle>学習を終了しますか？</DialogTitle>
+        <DialogContent>選択画面に戻ります。現在の回答は保存されません。</DialogContent>
+        <DialogActions>
+          <DialogTrigger disableButtonEnhancement><Button>学習を続ける</Button></DialogTrigger>
+          <DialogTrigger disableButtonEnhancement><Button appearance="primary" onClick={reset}>終了して戻る</Button></DialogTrigger>
+        </DialogActions>
+      </DialogBody>
+    </DialogSurface>
+  </Dialog>
 }

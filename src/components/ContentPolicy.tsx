@@ -29,7 +29,7 @@ export function ContentPolicy() {
         <p>
           各社の名称・商標は各権利者に帰属します。利用条件は変更される場合があります。
           権利上の懸念や問題の誤りは
-          <Link href="https://github.com/usagiandkamex/exam-traing-app/issues" target="_blank" rel="noopener noreferrer">GitHubのissue（別タブ）</Link>
+          <Link href="https://github.com/usagiandkamex/exam-training-app/issues" target="_blank" rel="noopener noreferrer">GitHubのissue（別タブ）</Link>
           へご連絡ください。実際の試験問題や個人情報は投稿しないでください。
         </p>
       </details>
