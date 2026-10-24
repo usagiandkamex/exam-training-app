@@ -1,0 +1,76 @@
+name: Copilot Setup Steps
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/copilot-setup-steps.yml
+      - .github/mcp.json
+      - package.json
+      - package-lock.json
+  pull_request:
+    paths:
+      - .github/workflows/copilot-setup-steps.yml
+      - .github/mcp.json
+      - package.json
+      - package-lock.json
+
+jobs:
+  copilot-setup-steps:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up uv
+        uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
+        with:
+          version: '0.13.5'
+          enable-cache: false
+      - name: Install AWS Documentation MCP server
+        run: |
+          uv venv --python 3.12 "$RUNNER_TEMP/copilot-mcp"
+          uv pip install --python "$RUNNER_TEMP/copilot-mcp/bin/python" 'awslabs.aws-documentation-mcp-server==1.2.3'
+          echo "$RUNNER_TEMP/copilot-mcp/bin" >> "$GITHUB_PATH"
+      - name: Verify MCP configuration and AWS server startup
+        run: |
+          "$RUNNER_TEMP/copilot-mcp/bin/python" - <<'PY'
+          import asyncio
+          import json
+          from pathlib import Path
+          from mcp import ClientSession, StdioServerParameters
+          from mcp.client.stdio import stdio_client
+
+          async def main():
+              servers = json.loads(Path(".github/mcp.json").read_text())["mcpServers"]
+              learn = servers["microsoft-learn"]
+              assert learn["type"] == "http"
+              assert learn["url"] == "https://learn.microsoft.com/api/mcp"
+              assert set(learn["tools"]) == {
+                  "microsoft_docs_search", "microsoft_docs_fetch", "microsoft_code_sample_search"
+              }
+              aws = servers["aws-documentation"]
+              assert aws["type"] == "local"
+              assert set(aws["tools"]) == {
+                  "search_documentation", "read_documentation", "recommend"
+              }
+              parameters = StdioServerParameters(
+                  command=aws["command"], args=aws["args"], env=aws["env"]
+              )
+              async with stdio_client(parameters) as (read, write):
+                  async with ClientSession(read, write) as session:
+                      await session.initialize()
+                      tools = {tool.name for tool in (await session.list_tools()).tools}
+                      assert set(aws["tools"]) <= tools, f"Missing AWS tools: {set(aws['tools']) - tools}"
+                      print("MCP configuration and AWS tools/list verified.")
+
+          asyncio.run(asyncio.wait_for(main(), timeout=30))
+          PY
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci

@@ -66,6 +66,30 @@ UIではなくデータを追加します。型定義は`src/lib/exam.ts`、登�
 - MCPが未設定・利用不可の場合は公式サイトや公式リポジトリを直接確認し、調査方法と制約をissue/PRに残します。どちらでも確認できない項目は未確認と明示し、推測で埋めず、[試験を追加する](#試験を追加する)の公開条件に従います。
 - 学習要領のURLと確認日は`blueprint`、利用条件の確認は`usageReview`、各問題の技術的根拠は`references`へ反映します。根拠の版・該当箇所や未解決点はissue/PRに残し、試験改訂時の再確認に使います。[公開コンテンツの方針](#公開コンテンツの方針)はMCPで取得した情報にも適用します。
 
+### GitHub Actions上のCopilotでMCPを有効にする
+
+GitHubのCopilot cloud agent（coding agent）が使うActions環境向けに、[セットアップworkflow](.github/workflows/copilot-setup-steps.yml)と[登録用MCP設定](.github/mcp.json)を用意しています。**workflowによる依存導入と、管理者によるMCP登録の両方が必要です。ファイルをコミットするだけではcloud agentにMCPサーバーは登録されません。**
+
+1. セットアップworkflowを既定ブランチへマージします。専用の`copilot-setup-steps`ジョブが、次回以降のタスク開始前にNode.js 22・npm依存・uv・Python 3.12の専用環境へAWS Documentation MCPサーバーを導入します。ActionはコミットSHA、uvとAWSサーバーはバージョンを固定しています。
+2. 管理者がリポジトリの **Settings → Copilot → MCP servers** を開き、`.github/mcp.json`のJSONを登録・保存します。既存の設定がある場合は上書きせず、`mcpServers`内の2サーバーを統合してください。この操作はリポジトリのworkflowからは行いません。VS Code用の`servers`形式とは異なります。
+3. Actionsの **Copilot Setup Steps** を手動実行して準備を確認します。設定の形式と、AWSサーバーの起動・`tools/list`に指定ツールが存在することを検証します。これはMicrosoft側の接続成功や、Settingsへの登録を検証するものではありません。
+4. 新しいCopilotタスクを開始し、セッションログで両サーバーの接続・ツール公開を確認します。Microsoftの検索／本文取得とAWSの`search_documentation`／`read_documentation`で公開資料を取得し、公式URLが返ることを確認してください。既に実行中のタスクには設定が遡って反映されません。
+
+- Microsoft Learnは認証不要のHTTP接続、AWSはrunner上のローカルstdio接続です。AWSはグローバルの公開ドキュメントを読むためのもので、AWSアカウント操作やリソース作成は行いません。AWS認証情報やAPIキーを追加する必要はありません。
+- cloud agentのMCP呼び出しは個別承認なしで実行されるため、設定では資料の検索・取得などのツールだけを明示的に許可しています。`tools: ["*"]`やクラウド操作用の別サーバーへ不用意に広げないでください。外部に送る検索語や引数に、秘密情報・個人情報・非公開コードを含めないでください。
+- セットアップが失敗してもCopilot本体は部分的な環境で開始し得ます。利用できない場合はActions・セッションログ、MCP登録、コマンドのPATHを確認します。ネットワーク制限があるrunnerでは、配布元に加え`learn.microsoft.com`、`docs.aws.amazon.com`、AWS検索APIの`proxy.search.docs.aws.com`と関連候補APIの`api.contentrecs.docs.aws.com`への通信を確認してください。firewallを一律に無効化しないでください。
+- サーバー更新時はworkflowの固定バージョンと設定のツール名を見直し、起動検証・実際の資料取得後にSettings側の設定も同期します。
+
+独自のActions workflowから **Copilot CLI** を起動する場合は別の仕組みです。CLIは`.github/mcp.json`をプロジェクト設定として読み込めますが、上記の専用セットアップworkflowは自動実行されません。CLIを呼ぶworkflowにも同じ依存導入・PATH設定が必要です。レビュー済みのワークスペースだけを信頼し、非対話実行のツール権限も必要なものに限定してください。
+
+公式資料（確認日：2026-10-24）：[GitHubのMCP登録](https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/configure-mcp-servers)、[環境のカスタマイズ](https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/customize-the-agent-environment)、[CLIのMCP設定](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-mcp-servers)。
+
+### AWS Documentation MCPの使い方
+
+[AWS公式の案内](https://awslabs.github.io/mcp/ja/servers/aws-documentation-mcp-server)と[公式リポジトリ](https://github.com/awslabs/mcp/tree/main/src/aws-documentation-mcp-server)を参照してください（確認日：2026-10-24）。上記のActions環境ではパッケージを事前導入し、`uvx ...@latest`によるタスク開始時の再ダウンロードは避けています。
+
+`search_documentation`でサービス名・機能名・制約を絞って検索し、`read_documentation`で返されたAWS公式URLの本文を確認します。関連資料を探すときは`recommend`を使います。AWS Certificationの試験範囲・問題数・利用条件は公式試験ガイドや受験契約で別途確認し、技術資料の検索結果だけから推定しないでください。
+
 ### Microsoft Learn MCPの使い方
 
 Microsoftの試験・技術資料を調べる際に利用できます。以下は[公式リポジトリ](https://github.com/MicrosoftDocs/mcp)で確認した内容です（確認日：2026-10-24）。最新の導入方法は同リポジトリと[公式ガイド](https://learn.microsoft.com/training/support/mcp)を参照してください。

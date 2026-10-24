@@ -1,0 +1,27 @@
+{
+  "mcpServers": {
+    "microsoft-learn": {
+      "type": "http",
+      "url": "https://learn.microsoft.com/api/mcp",
+      "tools": [
+        "microsoft_docs_search",
+        "microsoft_docs_fetch",
+        "microsoft_code_sample_search"
+      ]
+    },
+    "aws-documentation": {
+      "type": "local",
+      "command": "awslabs.aws-documentation-mcp-server",
+      "args": [],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR",
+        "AWS_DOCUMENTATION_PARTITION": "aws"
+      },
+      "tools": [
+        "search_documentation",
+        "read_documentation",
+        "recommend"
+      ]
+    }
+  }
+}
