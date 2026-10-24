@@ -111,7 +111,9 @@ export function validateExam(exam: Exam): string[] {
       if (!domain.weight) continue
       const count = exam.questions.filter((question) => question.domainId === domain.id).length
       const percentage = count / exam.questions.length * 100
-      require(percentage >= domain.weight.min && percentage <= domain.weight.max, `${domain.id}: 問題集の構成比率が公式範囲外です`)
+      const tolerance = 1e-10
+      require(percentage >= domain.weight.min - tolerance &&
+        percentage <= domain.weight.max + tolerance, `${domain.id}: 問題集の構成比率が公式範囲外です`)
     }
   }
   return errors

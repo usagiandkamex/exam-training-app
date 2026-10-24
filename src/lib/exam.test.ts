@@ -22,6 +22,17 @@ function certification(): Exam {
   return exam
 }
 
+function certificationWithQuestionCounts(firstDomainCount: number, secondDomainCount: number): Exam {
+  const exam = certification()
+  exam.questions = Array.from({ length: firstDomainCount + secondDomainCount }, (_, index) => {
+    const question = structuredClone(demo.questions[index % demo.questions.length])
+    question.id = `boundary-${index}`
+    question.domainId = index < firstDomainCount ? exam.domains[0].id : exam.domains[1].id
+    return question
+  })
+  return exam
+}
+
 test('every published bank and the demo pass content validation', () => {
   assert.deepEqual(validateCatalog(exams), [])
   assert.equal(demo.kind, 'demo')
@@ -65,6 +76,20 @@ test('certification bank composition must match all official domain ranges', () 
   assert.ok(validateExam(exam).some((error) => error.includes('構成比率')))
   exam.domains[0].weight = null
   assert.ok(validateExam(exam).some((error) => error.includes('分野別出題比率')))
+})
+
+test('certification bank composition accepts exact lower percentage boundaries', () => {
+  const exam = certificationWithQuestionCounts(87, 213)
+  exam.domains[0].weight = { min: 29, max: 29 }
+  exam.domains[1].weight = { min: 71, max: 71 }
+  assert.deepEqual(validateExam(exam), [])
+})
+
+test('certification bank composition accepts exact upper percentage boundaries', () => {
+  const exam = certificationWithQuestionCounts(140, 360)
+  exam.domains[0].weight = { min: 0, max: 28 }
+  exam.domains[1].weight = { min: 72, max: 100 }
+  assert.deepEqual(validateExam(exam), [])
 })
 
 test('invalid domain ranges and impossible total percentages are rejected', () => {
