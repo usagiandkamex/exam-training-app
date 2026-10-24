@@ -40,6 +40,10 @@ npm run preview  # 生成物をローカルで確認
 3. `github-pages`環境に承認が必要な場合は承認します。Actionsの`deploy`ジョブに表示される公開URLを確認します。
 4. 公開先は通常 **https://usagiandkamex.github.io/exam-training-app/** です。`main`上からの`workflow_dispatch`でも再公開できます。
 
+初回設定をActionsから行う場合は、このリポジトリだけを対象に **Pages: Read and write** を付与した有効期限付きfine-grained PATを、`github-pages`環境のシークレット **`PAGES_SETUP_TOKEN`** に登録してください。`configure-pages`はこのシークレットがある場合だけPagesの有効化を試みます。初回公開後はシークレットを削除でき、以降は標準の`GITHUB_TOKEN`で公開します。標準の`GITHUB_TOKEN`だけではPagesを初回有効化できません。
+
+`configure-pages`で **Get Pages site failed / Not Found** になる場合は、Pagesが未設定でないか確認し、上記の手動設定またはシークレット登録を行ってから失敗したジョブを再実行してください。
+
 PRでは同じ検証を行いますが、公開権限を付与せずデプロイしません。ブランチ保護またはrulesetで **`verify`を必須チェック**にし、問題データのレビューをマージ前に行ってください。この設定自体はワークフローからは変更しません。Viteの相対baseによりプロジェクト配下のURLでもアセットを読み込めます。静的な単一ページで、サーバー側のルーティング設定は不要です。
 
 ## 試験を追加する
