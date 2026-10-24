@@ -101,7 +101,7 @@ export function validateExam(exam: Exam): string[] {
     if (blueprint) {
       const { min, max } = blueprint.questionCount
       require(Number.isInteger(min) && Number.isInteger(max) && min > 0 && min <= max, '公式問題数の範囲が不正です')
-      require(exam.questions.length >= max * 5, '公式試験問題数の上限の5倍以上の問題が必要です')
+      require(exam.questions.length >= max * 10, '公式試験問題数の上限の10倍以上の問題が必要です')
     }
     require(exam.domains.every((domain) => domain.weight !== null), '公式の分野別出題比率が必要です')
     const minTotal = exam.domains.reduce((sum, domain) => sum + (domain.weight?.min ?? 0), 0)

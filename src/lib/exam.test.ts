@@ -44,11 +44,12 @@ test('catalog rejects an empty list and duplicate exam IDs', () => {
   assert.ok(validateCatalog([demo, demo]).some((error) => error.includes('試験ID')))
 })
 
-test('certification requires 5x the maximum official count, not the minimum', () => {
-  assert.deepEqual(validateExam(certification()), [])
+test('certification requires 10x the maximum official count, not the minimum', () => {
   const exam = certification()
-  exam.blueprint!.questionCount.max = 3
-  assert.ok(validateExam(exam).some((error) => error.includes('5倍')))
+  exam.blueprint!.questionCount.max = 1
+  assert.deepEqual(validateExam(exam), [])
+  exam.blueprint!.questionCount.max = 2
+  assert.ok(validateExam(exam).some((error) => error.includes('10倍')))
 })
 
 test('certification requires official blueprint and reviewed usage conditions', () => {

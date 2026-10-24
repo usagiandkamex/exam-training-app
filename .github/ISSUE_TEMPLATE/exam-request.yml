@@ -32,7 +32,7 @@ body:
     id: count
     attributes:
       label: 本番の問題数と根拠
-      description: 公式URLを記載してください。範囲がある場合は上限の5倍以上の独自問題を準備します。
+      description: 公式URLを記載してください。範囲がある場合は上限の10倍以上の独自問題を準備します。
     validations:
       required: true
   - type: textarea
