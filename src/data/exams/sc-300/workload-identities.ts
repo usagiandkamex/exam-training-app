@@ -298,7 +298,7 @@ const questions: Question[] = [
     ],
     correctChoiceIds: ['d'],
     explanation: 'マネージド ID とフェデレーションを利用できないアプリ専用処理には証明書資格情報を持つサービス プリンシパルが適する。外部サーバー名だけではマネージド ID を取得できず、ユーザーのパスワードや Cookie は無人アプリ固有の ID にならない。',
-    references: refs.ropc,
+    references: [...refs.credentials, ...refs.clientCredentials],
   },
   {
     id: 'sc300-workloads-005', domainId: 'workload-identities',
@@ -363,7 +363,7 @@ const questions: Question[] = [
     ],
     correctChoiceIds: ['d'],
     explanation: 'ユーザー コンテキストが不要な処理にはワークロード固有の ID を使い、Azure では利用可能なマネージド ID を優先する。担当者を交代したり表示名を変更したりしても、個人のライフサイクルとバッチの依存関係は解消しない。',
-    references: refs.ropc,
+    references: refs.managed,
   },
   {
     id: 'sc300-workloads-010', domainId: 'workload-identities',
@@ -870,7 +870,7 @@ const questions: Question[] = [
     ],
     correctChoiceIds: ['d'],
     explanation: 'パスワードベース SSO は資格情報を安全に保持してサインイン フォームへ再生する方式で、フェデレーション非対応アプリに使える。SCIM はアカウント管理であり、リンクだけではサインインを代行しない。表示名変更でプロトコルを追加することもできない。',
-    references: refs.sso,
+    references: refs.passwordSso,
   },
   {
     id: 'sc300-workloads-049', domainId: 'workload-identities',
@@ -896,7 +896,7 @@ const questions: Question[] = [
     ],
     correctChoiceIds: ['b'],
     explanation: 'OIDC は OAuth 2.0 を基盤として ID トークンを用いる認証プロトコルである。SCIM はユーザーのライフサイクル管理であり、フォーム再生や LDAP の匿名接続はこのトークン形式のフェデレーションではない。',
-    references: refs.sso,
+    references: refs.oidc,
   },
   {
     id: 'sc300-workloads-051', domainId: 'workload-identities',

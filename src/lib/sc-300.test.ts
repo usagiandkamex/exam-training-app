@@ -7,7 +7,7 @@ import { createSession, getStats, isCorrect, nextQuestion, submitAnswer } from '
 
 test('SC-300 is registered as an original Japanese certification without replacing existing exams', () => {
   assert.ok(exams.includes(sc300))
-  for (const id of ['dp-300', 'ai-200']) {
+  for (const id of ['dp-300', 'ai-200', 'sc-500']) {
     assert.ok(exams.some((exam) => exam.id === id && exam.kind === 'certification'))
   }
   assert.equal(sc300.id, 'sc-300')
@@ -43,7 +43,8 @@ test('SC-300 discloses its upcoming revision, general count guidance and unresol
   for (const text of ['2026年10月28日', '適用予定', '25〜30%', '20〜25%', '不一致', '未確認', '人による']) {
     assert.ok(sc300.usageReview.notes.includes(text), text)
   }
-  assert.ok(sc300.usageReview.notes.split(/\s+/).includes('https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience'))
+  assert.ok(sc300.usageReview.notes.split(/\s+/).some((token) =>
+    token === 'https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience'))
   assert.equal(sc300.blueprint?.reviewedOn, '2026-10-25')
   assert.equal(sc300.usageReview.reviewedOn, '2026-10-25')
 })
