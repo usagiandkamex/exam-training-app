@@ -56,11 +56,11 @@ function certificationWithQuestionCounts(firstDomainCount: number, secondDomainC
 
 test('published certification banks pass content validation and the demo is absent', () => {
   assert.deepEqual(validateCatalog(exams), [])
-  assert.deepEqual(exams.map((exam) => exam.id), ['dp-300', 'ai-200'])
+  assert.deepEqual(exams.map((exam) => exam.id), ['dp-300', 'ai-200', 'sc-500'])
 })
 
 test('Japanese question banks explicitly request Japanese Microsoft Learn reference pages', () => {
-  for (const id of ['dp-300', 'ai-200']) {
+  for (const id of ['dp-300', 'ai-200', 'sc-500']) {
     const exam = exams.find((item) => item.id === id)!
     assert.equal(exam.language, 'ja-JP')
     for (const question of exam.questions) {
