@@ -8,6 +8,7 @@ import hadr from './dp-300/hadr.ts'
 const dp300: Exam = {
   id: 'dp-300',
   title: 'DP-300: Microsoft Azure SQL ソリューションの管理',
+  language: 'ja-JP',
   description: '2026年10月27日適用版の公開済み学習要領を対象とした、日本語の独自問題600問です。非公式の学習用問題集で、本番の問題・形式・難易度を再現するものではありません。40〜60問はMicrosoft認定試験全般の目安であり、DP-300の固定問題数ではありません。',
   kind: 'certification',
   authorship: 'original',
