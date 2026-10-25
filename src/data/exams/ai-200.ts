@@ -7,6 +7,7 @@ import securityMonitoring from './ai-200/security-monitoring.ts'
 const ai200: Exam = {
   id: 'ai-200',
   title: 'AI-200: Azure での AI クラウド ソリューションの開発',
+  language: 'ja-JP',
   description: '2026年10月7日版の学習要領を対象とした、日本語の独自問題600問です。非公式の学習用問題集で、本番の問題・形式・難易度を再現するものではありません。40〜60問はMicrosoft認定試験全般の目安であり、AI-200の固定問題数ではありません。データ管理分野は公式概要の30〜35%を表示していますが、詳細見出しは25〜30%と不一致のため、収録比率を両方に収まる30%にしています。',
   kind: 'certification',
   authorship: 'original',

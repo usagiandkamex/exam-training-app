@@ -12,6 +12,7 @@ function certification(): Exam {
   return {
     id: 'fixture',
     title: 'Test certification',
+    language: 'en-US',
     description: 'Test fixture; not a published certification.',
     kind: 'certification',
     authorship: 'original',
@@ -61,6 +62,7 @@ test('published certification banks pass content validation and the demo is abse
 test('Japanese question banks explicitly request Japanese Microsoft Learn reference pages', () => {
   for (const id of ['dp-300', 'ai-200']) {
     const exam = exams.find((item) => item.id === id)!
+    assert.equal(exam.language, 'ja-JP')
     for (const question of exam.questions) {
       for (const ref of question.references) {
         const url = new URL(ref.url)
@@ -76,6 +78,19 @@ test('catalog rejects an empty list and duplicate exam IDs', () => {
   assert.ok(validateCatalog([]).length > 0)
   const exam = certification()
   assert.ok(validateCatalog([exam, exam]).some((error) => error.includes('試験ID')))
+})
+
+test('exam maintenance requires a valid question language, including future languages', () => {
+  for (const language of ['', '日本語', 'ja_JP']) {
+    const exam = certification()
+    exam.language = language
+    assert.ok(validateExam(exam).some((error) => error.includes('BCP 47')))
+  }
+  for (const language of ['ja-JP', 'en-US', 'zh-Hant']) {
+    const exam = certificationWithQuestionCounts(10, 10)
+    exam.language = language
+    assert.deepEqual(validateExam(exam), [])
+  }
 })
 
 test('certification requires 10x the maximum official count, not the minimum', () => {

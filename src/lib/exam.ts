@@ -22,6 +22,7 @@ export interface Question {
 export interface Exam {
   id: string
   title: string
+  language: string
   description: string
   kind: 'certification'
   authorship: 'original'
@@ -52,12 +53,21 @@ function isReviewDate(value: string): boolean {
     new Date(value).toISOString().slice(0, 10) === value
 }
 
+function isLanguage(value: string): boolean {
+  try {
+    return Intl.getCanonicalLocales(value).length === 1
+  } catch {
+    return false
+  }
+}
+
 export function validateExam(exam: Exam): string[] {
   const errors: string[] = []
   const require = (condition: boolean, message: string) => {
     if (!condition) errors.push(`${exam.id}: ${message}`)
   }
   require(Boolean(exam.id.trim() && exam.title.trim() && exam.description.trim()), '基本情報が必要です')
+  require(isLanguage(exam.language), '問題言語のBCP 47タグが必要です')
   require(exam.kind === 'certification', '試験種別が不正です')
   require(exam.authorship === 'original', '独自作問のみ登録できます')
   require(exam.officialHosts.length > 0, '公式参照先のホストが必要です')
