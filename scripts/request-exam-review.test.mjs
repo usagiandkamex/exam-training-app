@@ -7,7 +7,8 @@ import { buildReviewIssue, requestExamReview } from './request-exam-review.mjs'
 const now = new Date('2026-10-24T18:23:00Z')
 const options = { repository: 'example/exam-app', token: 'not-a-credential', now }
 const copilot = { login: 'copilot-swe-agent[bot]' }
-const issue = { number: 42, state: 'open', assignees: [], body: buildReviewIssue(exams, now).body }
+const creator = { id: 123, login: 'review-automation' }
+const issue = { number: 42, state: 'open', user: creator, assignees: [], body: buildReviewIssue(exams, now).body }
 
 function api(responses) {
   const calls = []
@@ -60,15 +61,18 @@ test('workflow schedules Sunday early morning JST and isolates the assignment se
 })
 
 test('creates a marked issue and verifies Copilot assignment using the user token', async () => {
-  const mock = api([{ data: [] }, { data: issue }, { data: { ...issue, assignees: [copilot] } }])
+  const mock = api([{ data: creator }, { data: [] }, { data: issue }, { data: { ...issue, assignees: [copilot] } }])
   const result = await requestExamReview({ ...options, fetchImpl: mock.fetchImpl })
   assert.deepEqual(result.assignees, [copilot])
-  assert.equal(mock.calls.length, 3)
-  assert.match(mock.calls[0].url, /state=all/)
-  assert.equal(mock.calls[1].method, 'POST')
-  assert.equal(mock.calls[1].body.body, issue.body)
-  assert.ok(mock.calls[2].url.endsWith('/issues/42/assignees'))
-  assert.deepEqual(mock.calls[2].body, { assignees: [copilot.login] })
+  assert.equal(mock.calls.length, 4)
+  assert.equal(mock.calls[0].url, 'https://api.github.com/user')
+  assert.equal(mock.calls[0].method, 'GET')
+  assert.ok(mock.calls[1].url.startsWith(`https://api.github.com/repos/${options.repository}/issues?state=all`))
+  assert.equal(mock.calls[2].url, `https://api.github.com/repos/${options.repository}/issues`)
+  assert.equal(mock.calls[2].method, 'POST')
+  assert.equal(mock.calls[2].body.body, issue.body)
+  assert.equal(mock.calls[3].url, `https://api.github.com/repos/${options.repository}/issues/42/assignees`)
+  assert.deepEqual(mock.calls[3].body, { assignees: [copilot.login] })
   for (const call of mock.calls) {
     assert.equal(call.headers.Authorization, ['Bearer', options.token].join(' '))
     assert.equal(call.redirect, 'error')
@@ -78,28 +82,70 @@ test('creates a marked issue and verifies Copilot assignment using the user toke
 test('paginates, ignores pull requests, and does not restart an assigned issue', async () => {
   const first = Array.from({ length: 100 }, () => ({ ...issue, pull_request: {} }))
   const assigned = { ...issue, assignees: [copilot] }
-  const mock = api([{ data: first }, { data: [assigned] }])
+  const mock = api([{ data: creator }, { data: first }, { data: [assigned] }])
   assert.deepEqual(await requestExamReview({ ...options, fetchImpl: mock.fetchImpl }), assigned)
-  assert.equal(mock.calls.length, 2)
-  assert.match(mock.calls[1].url, /page=2/)
+  assert.equal(mock.calls.length, 3)
+  assert.match(mock.calls[2].url, /page=2/)
 })
 
 test('reuses an unassigned issue after a partial failure instead of creating another', async () => {
-  const mock = api([{ data: [issue] }, { data: { ...issue, assignees: [copilot] } }])
+  const mock = api([{ data: creator }, { data: [issue] }, { data: { ...issue, assignees: [copilot] } }])
   await requestExamReview({ ...options, fetchImpl: mock.fetchImpl })
-  assert.equal(mock.calls.length, 2)
-  assert.ok(mock.calls[1].url.endsWith('/assignees'))
+  assert.equal(mock.calls.length, 3)
+  assert.ok(mock.calls[2].url.endsWith('/assignees'))
 })
 
 test('closed issues suppress same-week duplicates but last week never blocks a new review', async () => {
   const closed = { ...issue, state: 'closed' }
-  const sameWeek = api([{ data: [closed] }])
+  const sameWeek = api([{ data: creator }, { data: [closed] }])
   assert.deepEqual(await requestExamReview({ ...options, fetchImpl: sameWeek.fetchImpl }), closed)
-  assert.equal(sameWeek.calls.length, 1)
+  assert.equal(sameWeek.calls.length, 2)
   const previousWeek = { ...issue, body: buildReviewIssue(exams, new Date('2026-10-18T18:23:00Z')).body }
-  const nextWeek = api([{ data: [previousWeek] }, { data: issue }, { data: { ...issue, assignees: [copilot] } }])
+  const nextWeek = api([{ data: creator }, { data: [previousWeek] }, { data: issue }, { data: { ...issue, assignees: [copilot] } }])
   await requestExamReview({ ...options, fetchImpl: nextWeek.fetchImpl })
-  assert.equal(nextWeek.calls.length, 3)
+  assert.equal(nextWeek.calls.length, 4)
+})
+
+test('forged open or closed markers and missing authors cannot authorize reuse', async () => {
+  for (const state of ['open', 'closed']) {
+    for (const user of [{ ...creator, id: 456 }, undefined, null]) {
+      const forged = { ...issue, number: 99, state, user }
+      const mock = api([
+        { data: creator }, { data: [forged] }, { data: issue },
+        { data: { ...issue, assignees: [copilot] } },
+      ])
+      const result = await requestExamReview({ ...options, fetchImpl: mock.fetchImpl })
+      assert.equal(result.number, issue.number)
+      assert.equal(mock.calls.length, 4)
+      assert.equal(mock.calls[2].method, 'POST')
+      assert.equal(mock.calls[2].body.body, issue.body)
+      assert.ok(mock.calls[3].url.endsWith('/issues/42/assignees'))
+    }
+  }
+})
+
+test('untrusted markers do not hide a trusted issue on a later page', async () => {
+  const first = Array.from({ length: 100 }, (_, index) => ({
+    ...issue, number: 100 + index, state: index % 2 ? 'closed' : 'open', user: { id: 456 },
+  }))
+  const mock = api([
+    { data: creator }, { data: first }, { data: [issue] },
+    { data: { ...issue, assignees: [copilot] } },
+  ])
+  await requestExamReview({ ...options, fetchImpl: mock.fetchImpl })
+  assert.equal(mock.calls.length, 4)
+  assert.match(mock.calls[2].url, /page=2/)
+  assert.ok(mock.calls[3].url.endsWith('/issues/42/assignees'))
+})
+
+test('invalid authenticated identities fail before listing or mutating issues', async () => {
+  for (const data of [null, {}, { id: 0 }, { id: -1 }, { id: '123' }, { id: 1.5 },
+    { id: Number.MAX_SAFE_INTEGER + 1 }]) {
+    const mock = api([{ data }])
+    await assert.rejects(requestExamReview({ ...options, fetchImpl: mock.fetchImpl }), /認証ユーザーのID/)
+    assert.equal(mock.calls.length, 1)
+    assert.equal(mock.calls[0].url, 'https://api.github.com/user')
+  }
 })
 
 test('missing credentials or an invalid repository fail before any request', async () => {
@@ -111,11 +157,12 @@ test('missing credentials or an invalid repository fail before any request', asy
   assert.equal(mock.calls.length, 0)
 })
 
-test('API failures at listing, creation or assignment fail without exposing response bodies', async () => {
+test('API failures at authentication, listing, creation or assignment fail without exposing response bodies', async () => {
   const stages = [
     [],
-    [{ data: [] }],
-    [{ data: [] }, { data: issue }],
+    [{ data: creator }],
+    [{ data: creator }, { data: [] }],
+    [{ data: creator }, { data: [] }, { data: issue }],
   ]
   for (const preceding of stages) {
     const mock = api([...preceding, { data: { message: 'sensitive response' }, status: 403 }])
@@ -129,6 +176,6 @@ test('API failures at listing, creation or assignment fail without exposing resp
 })
 
 test('silent assignment rejection is a failure even with a successful HTTP response', async () => {
-  const mock = api([{ data: [issue] }, { data: issue }])
+  const mock = api([{ data: creator }, { data: [issue] }, { data: issue }])
   await assert.rejects(requestExamReview({ ...options, fetchImpl: mock.fetchImpl }), /Copilotを割り当てられません/)
 })

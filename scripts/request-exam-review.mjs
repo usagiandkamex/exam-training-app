@@ -56,7 +56,7 @@ export async function requestExamReview({
   }
   const review = buildReviewIssue(catalog, now)
   const request = async (path, method = 'GET', body) => {
-    const response = await fetchImpl(`https://api.github.com/repos/${repository}${path}`, {
+    const response = await fetchImpl(`https://api.github.com${path}`, {
       method,
       redirect: 'error',
       headers: {
@@ -71,19 +71,24 @@ export async function requestExamReview({
     return response.json()
   }
 
+  const creator = await request('/user')
+  if (!Number.isSafeInteger(creator?.id) || creator.id <= 0) {
+    throw new Error('GitHub認証ユーザーのIDを確認できませんでした')
+  }
+  const issuesPath = `/repos/${repository}/issues`
   let issue
   for (let page = 1; ; page++) {
-    const batch = await request(`/issues?state=all&sort=created&direction=desc&per_page=100&page=${page}&since=${encodeURIComponent(review.since)}`)
-    issue = batch.find((item) => !item.pull_request && item.body?.includes(review.marker))
+    const batch = await request(`${issuesPath}?state=all&sort=created&direction=desc&per_page=100&page=${page}&since=${encodeURIComponent(review.since)}`)
+    issue = batch.find((item) => !item.pull_request && item.user?.id === creator.id && item.body?.includes(review.marker))
     if (issue || batch.length < 100) break
   }
   if (!issue) {
-    issue = await request('/issues', 'POST', { title: review.title, body: review.body })
+    issue = await request(issuesPath, 'POST', { title: review.title, body: review.body })
   }
   if (issue.state === 'closed' || issue.assignees.some((user) => user.login === copilot)) {
     return issue
   }
-  const assigned = await request(`/issues/${issue.number}/assignees`, 'POST', {
+  const assigned = await request(`${issuesPath}/${issue.number}/assignees`, 'POST', {
     assignees: [copilot],
   })
   if (!assigned.assignees.some((user) => user.login === copilot)) {
