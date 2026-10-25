@@ -11,7 +11,7 @@ GitHub Pagesで公開する、非公式の選択式クイズアプリです。Re
 - 現在の問題数、回答数、正解数、回答済み問題の正答率、終了時の分野別結果と誤答の復習を表示。
 - スマートフォン・PC向けのレスポンシブUI。キーボード操作、読み上げ通知、動きを減らす設定にも対応。
 
-**DP-300「Microsoft Azure SQL ソリューションの管理」とAI-200「Azure での AI クラウド ソリューションの開発」の日本語・非公式問題集を各600問公開しています。** Azure・AWS・CISSPなどの試験は[追加リクエスト](https://github.com/usagiandkamex/exam-training-app/issues/new?template=exam-request.yml)をもとに追加します。
+**DP-300「Microsoft Azure SQL ソリューションの管理」、AI-200「Azure での AI クラウド ソリューションの開発」、SC-500「クラウドおよび AI ワークロードに対するエンドツーエンドのセキュリティ制御の実装」の日本語・非公式問題集を各600問公開しています。** Azure・AWS・CISSPなどの試験は[追加リクエスト](https://github.com/usagiandkamex/exam-training-app/issues/new?template=exam-request.yml)をもとに追加します。
 
 DP-300は[公式学習ガイド](https://learn.microsoft.com/ja-jp/credentials/certifications/resources/study-guides/dp-300)で公開されている**2026年10月27日適用版**を対象にしています（確認日：2026-10-25、確認時点では適用予定）。分野と収録数は次のとおりです。
 
@@ -35,6 +35,17 @@ AI-200は[公式学習ガイド](https://learn.microsoft.com/ja-jp/credentials/c
 | Azure ソリューションのセキュリティ保護、監視、トラブルシューティング | 20〜25% | 135問 |
 
 データ管理分野は、日英の公式ガイドとも概要では30〜35%、詳細見出しでは25〜30%と不一致があります。変更履歴には比率の増加が記載されていますが、不一致の解消は未確認です。画面には概要の範囲を表示し、問題集の構成は両方を満たす30%（180/600問）にしています。AI-200固有の問題数も確認できないため、上記のMicrosoft認定試験全般の目安40〜60問を計画に使用して600問を用意しています。AI-200の固定問題数・上限や、日本語での本番試験の提供を保証するものではありません。公開技術資料からの独自作問であり、マージ前には人による内容・権利レビューが必要です。
+
+SC-500は[公式学習ガイド](https://learn.microsoft.com/ja-jp/credentials/certifications/resources/study-guides/sc-500)を対象にしています（確認日：2026-10-25）。認定資格は[クラウドおよび AI セキュリティ エンジニア アソシエイト](https://learn.microsoft.com/ja-jp/credentials/certifications/cloud-and-ai-security-engineer-associate/)です。確認時点の日英ガイドでは4分野と比率が一致しており、本文に改訂日・適用日の明記はありません。
+
+| 分野 | 公式の出題比率 | 収録数 |
+| --- | --- | --- |
+| ID、アクセス、ガバナンスの管理 | 20〜25% | 140問 |
+| セキュリティで保護されたストレージ、データベース、ネットワーク | 25〜30% | 180問 |
+| セキュリティで保護されたコンピューティング | 20〜25% | 140問 |
+| セキュリティ体制の管理と監視 | 20〜25% | 140問 |
+
+SC-500固有の問題数は未確認のため、上記の[Microsoft認定試験全般の目安40〜60問](https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience)の上限を計画に使用し、10倍の600問を用意しています（確認日：2026-10-25）。SC-500の固定問題数・上限、本番試験の日本語提供、形式・難易度・合否を保証するものではありません。[受験者契約](https://learn.microsoft.com/ja-jp/credentials/support/certification-exam-candidate-agreement)、[試験セキュリティポリシー](https://learn.microsoft.com/ja-jp/credentials/support/exam-and-assessment-lab-security-policies)、[Microsoft Learn利用条件](https://learn.microsoft.com/ja-jp/legal/termsofuse)を確認し、公開技術資料から独自作問しています。実際の試験・公式練習問題・ダンプや資料本文の転載・翻訳ではなく、マージ前には人による内容・権利・正確性のレビューが必要です。
 
 回答はメモリ上だけに保持し、再読み込みや終了で消えます。学習履歴の送信・永続保存、広告、アクセス解析はありません。GitHub Pagesによるアクセス情報の取り扱いは[GitHubのプライバシー声明](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement)を参照してください。
 
