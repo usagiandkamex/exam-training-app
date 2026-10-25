@@ -71,6 +71,11 @@ const armDeploymentModes = [{
   url: 'https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/deployment-modes',
 }]
 
+const deploymentStackKnownIssues = [{
+  title: 'Deployment stacks known issues',
+  url: 'https://learn.microsoft.com/azure/azure-resource-manager/bicep/deployment-stacks-known-issues',
+}]
+
 const bicepCliDeployment = [{
   title: 'Deploy Bicep files with the Azure CLI',
   url: 'https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/deploy-cli',
@@ -438,11 +443,11 @@ const questions: Question[] = [
     choices: [
       { id: 'a', text: 'Managed Instance の Agent は任意の PowerShell モジュールを自動インストールする' },
       { id: 'b', text: 'CmdExec から powershell 実行ファイルを呼べばサポート対象になる' },
-      { id: 'c', text: 'Managed Instance では PowerShell と CmdExec の Agent ステップが非対応なので、Hybrid Worker など外部の実行基盤へ移す' },
+      { id: 'c', text: 'Managed Instance の Agent では PowerShell ステップを利用できるが、dbatools など外部モジュールをインポートできないため、Hybrid Worker など外部の実行基盤へ移す' },
       { id: 'd', text: 'CPU アイドル スケジュールにすれば利用できる' },
     ],
     correctChoiceIds: ['c'],
-    explanation: 'Managed Instance の SQL Agent では PowerShell と CmdExec のジョブ ステップを使えないため、dbatools を要する OS レベルの処理は Hybrid Worker など外部で実行する。モジュールの自動導入や CmdExec 経由の回避はサポートされず、CPU アイドル スケジュールも利用できない。',
+    explanation: 'Managed Instance の SQL Agent では PowerShell ステップを利用できるが、dbatools などの外部モジュールをインポートできない。したがって、このモジュールを必要とする処理は Hybrid Worker など外部で実行する。モジュールの自動導入や CmdExec 経由では制約を回避できず、CPU アイドル スケジュールも利用できない。',
     references: managedInstanceDifferences,
   },
   {
@@ -520,13 +525,13 @@ const questions: Question[] = [
     domainId: 'automation',
     prompt: 'Azure SQL Managed Instance の T-SQL Agent ジョブで、検証失敗時だけクリーンアップ ステップへ分岐させたい。最適な構成はどれか。',
     choices: [
-      { id: 'a', text: '2番目のステップの失敗時アクションを「次のステップへ移動」にする' },
+      { id: 'a', text: '検証ステップの失敗時はクリーンアップ ステップへ移動し、成功時はクリーンアップを飛ばして通常処理へ進む（後続処理がなければ成功として終了する）' },
       { id: 'b', text: '2番目のステップに新しい日次スケジュールを付ける' },
       { id: 'c', text: '3番目のステップをオペレーターとして登録する' },
       { id: 'd', text: 'ジョブ履歴の行数を3にする' },
     ],
     correctChoiceIds: ['a'],
-    explanation: '検証ステップの失敗時アクションをクリーンアップ ステップへの移動に設定すると、結果に応じてフローを制御できる。日次スケジュールは開始時刻、オペレーターは通知先、履歴行数は保持設定であり、分岐を作らない。',
+    explanation: '検証ステップでは、失敗時の遷移先をクリーンアップ ステップにし、成功時はクリーンアップを通らないよう通常処理へ移動するか、成功としてジョブを終了する。成功時に「次のステップへ移動」を選ぶと、次がクリーンアップなら成功時にも実行される。日次スケジュール、オペレーター、履歴行数ではこの分岐を作れない。',
     references: agentStepFlow,
   },
   {
@@ -703,13 +708,13 @@ const questions: Question[] = [
     prompt: 'テンプレートから削除したリソースを安全に廃止したい。現在の Microsoft の推奨に最も合う方法はどれか。',
     choices: [
       { id: 'a', text: '完全モードを無条件で使い続ける' },
-      { id: 'b', text: '削除管理には deployment stacks を検討し、事前に what-if で確認する' },
+      { id: 'b', text: 'deployment stacks の管理対象一覧と更新後のテンプレートを比較し、actionOnUnmanage の設定から削除・切り離し対象を確認する' },
       { id: 'c', text: '増分モードならテンプレート未記載リソースが自動削除される' },
       { id: 'd', text: '配置履歴を削除するとリソースも削除される' },
     ],
     correctChoiceIds: ['b'],
-    explanation: '完全モードは段階的廃止予定であり、リソース削除には deployment stacks を検討して事前に what-if で確認する。完全モードの無条件利用は現行推奨に反し、増分モードは未記載リソースを残す。配置履歴の削除も実リソースを削除しない。',
-    references: armDeploymentModes,
+    explanation: 'deployment stacks では、管理対象リソースの一覧と更新後テンプレートを比較し、stack から外れるリソースを特定する。actionOnUnmanage の設定に基づき、そのリソースが削除されるか管理対象から切り離されるかを確認する。stack の削除範囲を what-if で確認することはできない。完全モードの無条件利用は現行推奨に反し、増分モードは未記載リソースを残し、配置履歴の削除も実リソースを削除しない。',
+    references: [...armDeploymentModes, ...deploymentStackKnownIssues],
   },
   {
     id: 'dp300-automation-042',
