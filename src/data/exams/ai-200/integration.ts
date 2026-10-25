@@ -3,151 +3,151 @@ import type { Question } from '../../../lib/exam.ts'
 const refs = {
   busEntities: [{
     title: 'Service Bus queues, topics, and subscriptions',
-    url: 'https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions',
+    url: 'https://learn.microsoft.com/ja-jp/azure/service-bus-messaging/service-bus-queues-topics-subscriptions',
   }],
   busFilters: [{
     title: 'Topic filters and actions',
-    url: 'https://learn.microsoft.com/en-us/azure/service-bus-messaging/topic-filters',
+    url: 'https://learn.microsoft.com/ja-jp/azure/service-bus-messaging/topic-filters',
   }],
   settlement: [{
     title: 'Message transfers, locks, and settlement',
-    url: 'https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-transfers-locks-settlement',
+    url: 'https://learn.microsoft.com/ja-jp/azure/service-bus-messaging/message-transfers-locks-settlement',
   }],
   duplicates: [{
     title: 'Duplicate detection in Azure Service Bus',
-    url: 'https://learn.microsoft.com/en-us/azure/service-bus-messaging/duplicate-detection',
+    url: 'https://learn.microsoft.com/ja-jp/azure/service-bus-messaging/duplicate-detection',
   }],
   sessions: [{
     title: 'Message sessions',
-    url: 'https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-sessions',
+    url: 'https://learn.microsoft.com/ja-jp/azure/service-bus-messaging/message-sessions',
   }],
   deferral: [{
     title: 'Message deferral in Azure Service Bus',
-    url: 'https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-deferral',
+    url: 'https://learn.microsoft.com/ja-jp/azure/service-bus-messaging/message-deferral',
   }],
   busDlq: [{
     title: 'Overview of Service Bus dead-letter queues',
-    url: 'https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-dead-letter-queues',
+    url: 'https://learn.microsoft.com/ja-jp/azure/service-bus-messaging/service-bus-dead-letter-queues',
   }],
   expiration: [{
     title: 'Azure Service Bus - Message expiration (Time to Live)',
-    url: 'https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-expiration',
+    url: 'https://learn.microsoft.com/ja-jp/azure/service-bus-messaging/message-expiration',
   }],
   sequencing: [{
     title: 'Message sequencing and timestamps',
-    url: 'https://learn.microsoft.com/en-us/azure/service-bus-messaging/message-sequencing',
+    url: 'https://learn.microsoft.com/ja-jp/azure/service-bus-messaging/message-sequencing',
   }],
   prefetch: [{
     title: 'Prefetch Azure Service Bus messages',
-    url: 'https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-prefetch',
+    url: 'https://learn.microsoft.com/ja-jp/azure/service-bus-messaging/service-bus-prefetch',
   }],
   transactions: [{
     title: 'Overview of Service Bus transaction processing',
-    url: 'https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-transactions',
+    url: 'https://learn.microsoft.com/ja-jp/azure/service-bus-messaging/service-bus-transactions',
   }],
   forwarding: [{
     title: 'Chaining Service Bus entities with autoforwarding',
-    url: 'https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-auto-forwarding',
+    url: 'https://learn.microsoft.com/ja-jp/azure/service-bus-messaging/service-bus-auto-forwarding',
   }],
   busAsync: [{
     title: 'ServiceBusSender class - asynchronous Python client',
-    url: 'https://learn.microsoft.com/en-us/python/api/azure-servicebus/azure.servicebus.aio.servicebussender?view=azure-python',
+    url: 'https://learn.microsoft.com/ja-jp/python/api/azure-servicebus/azure.servicebus.aio.servicebussender?view=azure-python',
   }],
   gridConcepts: [{
     title: "Azure Event Grid's push delivery - concepts",
-    url: 'https://learn.microsoft.com/en-us/azure/event-grid/concepts',
+    url: 'https://learn.microsoft.com/ja-jp/azure/event-grid/concepts',
   }],
   gridFilters: [{
     title: 'Understand event filtering for Event Grid subscriptions',
-    url: 'https://learn.microsoft.com/en-us/azure/event-grid/event-filtering',
+    url: 'https://learn.microsoft.com/ja-jp/azure/event-grid/event-filtering',
   }],
   gridSchema: [{
     title: 'Azure Event Grid event schema',
-    url: 'https://learn.microsoft.com/en-us/azure/event-grid/event-schema',
+    url: 'https://learn.microsoft.com/ja-jp/azure/event-grid/event-schema',
   }],
   gridDelivery: [{
     title: 'Event Grid message delivery and retry',
-    url: 'https://learn.microsoft.com/en-us/azure/event-grid/delivery-and-retry',
+    url: 'https://learn.microsoft.com/ja-jp/azure/event-grid/delivery-and-retry',
   }],
   gridIdentity: [{
     title: 'Grant managed identity the access to Event Grid destination',
-    url: 'https://learn.microsoft.com/en-us/azure/event-grid/add-identity-roles',
+    url: 'https://learn.microsoft.com/ja-jp/azure/event-grid/add-identity-roles',
   }],
   cloudValidation: [{
     title: 'Endpoint validation by using CloudEvents schema',
-    url: 'https://learn.microsoft.com/en-us/azure/event-grid/webhook-event-delivery',
+    url: 'https://learn.microsoft.com/ja-jp/azure/event-grid/webhook-event-delivery',
   }],
   bindings: [{
     title: 'Azure Functions triggers and bindings',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-functions/functions-triggers-bindings',
   }],
   python: [{
     title: 'Azure Functions developer reference guide for Python apps',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-functions/functions-reference-python',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-functions/functions-reference-python',
   }],
   http: [{
     title: 'Azure Functions HTTP trigger',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook-trigger',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-functions/functions-bindings-http-webhook-trigger',
   }],
   expressions: [{
     title: 'Azure Functions binding expressions and patterns',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-expressions-patterns',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-functions/functions-bindings-expressions-patterns',
   }],
   functionErrors: [{
     title: 'Azure Functions error handling and retries',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-error-pages',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-functions/functions-bindings-error-pages',
   }],
   busTrigger: [{
     title: 'Azure Service Bus trigger for Azure Functions',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-service-bus-trigger',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-functions/functions-bindings-service-bus-trigger',
   }],
   busBindings: [{
     title: 'Azure Service Bus bindings for Azure Functions',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-service-bus',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-functions/functions-bindings-service-bus',
   }],
   gridTrigger: [{
     title: 'Azure Event Grid trigger for Azure Functions',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-event-grid-trigger',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-functions/functions-bindings-event-grid-trigger',
   }],
   timer: [{
     title: 'Timer trigger for Azure Functions',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-timer',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-functions/functions-bindings-timer',
   }],
   pythonPerformance: [{
     title: 'Improve throughput performance of Python apps in Azure Functions',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-functions/python-scale-performance-reference',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-functions/python-scale-performance-reference',
   }],
   reliability: [{
     title: 'Improve the performance and reliability of Azure Functions',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-functions/performance-reliability',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-functions/performance-reliability',
   }],
   local: [{
     title: 'Develop Azure Functions locally by using Core Tools',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-functions/functions-run-local',
   }],
   appSettings: [{
     title: 'App settings reference for Azure Functions',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-functions/functions-app-settings',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-functions/functions-app-settings',
   }],
   package: [{
     title: 'Package-based deployment for Azure Functions',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-functions/deployment-zip-push',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-functions/deployment-zip-push',
   }],
   slots: [{
     title: 'Azure Functions deployment slots',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-functions/functions-deployment-slots',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-functions/functions-deployment-slots',
   }],
   disable: [{
     title: 'How to disable functions in Azure Functions',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-functions/disable-function',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-functions/disable-function',
   }],
   scaling: [{
     title: 'Azure Functions scale and hosting',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-functions/functions-scale',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-functions/functions-scale',
   }],
   pythonBuild: [{
     title: 'Build your Python Azure Functions apps',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-functions/python-build-options',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-functions/python-build-options',
   }],
 }
 

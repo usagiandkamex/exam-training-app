@@ -3,171 +3,171 @@ import type { Question } from '../../../lib/exam.ts'
 const references = {
   baseline: {
     title: 'パフォーマンス ベースラインの確立',
-    url: 'https://learn.microsoft.com/en-us/sql/relational-databases/performance/establish-a-performance-baseline',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/performance/establish-a-performance-baseline',
   },
   azureMonitoring: {
     title: 'Azure SQL Database の監視とパフォーマンス チューニング',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-sql/database/monitor-tune-overview',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/database/monitor-tune-overview',
   },
   azureMetrics: {
     title: 'Azure SQL Database の監視データ リファレンス',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-sql/database/monitoring-sql-database-azure-monitor-reference',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/database/monitoring-sql-database-azure-monitor-reference',
   },
   databaseWatcher: {
     title: 'データベース ウォッチャーによる Azure SQL ワークロードの監視',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-sql/database-watcher-overview',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/database-watcher-overview',
   },
   extendedEvents: {
     title: '拡張イベントの概要',
-    url: 'https://learn.microsoft.com/en-us/sql/relational-databases/extended-events/extended-events',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/extended-events/extended-events',
   },
   queryStore: {
     title: 'Query Store を使用したパフォーマンスの監視',
-    url: 'https://learn.microsoft.com/en-us/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store',
   },
   queryStoreBestPractices: {
     title: 'Query Store の管理に関するベスト プラクティス',
-    url: 'https://learn.microsoft.com/en-us/sql/relational-databases/performance/manage-the-query-store',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/performance/manage-the-query-store',
   },
   queryStoreHints: {
     title: 'Query Store ヒント',
-    url: 'https://learn.microsoft.com/en-us/sql/relational-databases/performance/query-store-hints',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/performance/query-store-hints',
   },
   requestDmv: {
     title: 'sys.dm_exec_requests',
-    url: 'https://learn.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql',
   },
   queryStatsDmv: {
     title: 'sys.dm_exec_query_stats',
-    url: 'https://learn.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql',
   },
   databaseWaitsDmv: {
     title: 'sys.dm_db_wait_stats',
-    url: 'https://learn.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database',
   },
   waitsDmv: {
     title: 'sys.dm_os_wait_stats',
-    url: 'https://learn.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql',
   },
   blocking: {
     title: 'SQL Server のブロッキング問題の理解と解決',
-    url: 'https://learn.microsoft.com/en-us/troubleshoot/sql/database-engine/performance/understand-resolve-blocking',
+    url: 'https://learn.microsoft.com/ja-jp/troubleshoot/sql/database-engine/performance/understand-resolve-blocking',
   },
   deadlocks: {
     title: 'デッドロック ガイド',
-    url: 'https://learn.microsoft.com/en-us/sql/relational-databases/sql-server-deadlocks-guide',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/sql-server-deadlocks-guide',
   },
   locksDmv: {
     title: 'sys.dm_tran_locks',
-    url: 'https://learn.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql',
   },
   plans: {
     title: '実行プランの表示と保存',
-    url: 'https://learn.microsoft.com/en-us/sql/relational-databases/performance/display-and-save-execution-plans',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/performance/display-and-save-execution-plans',
   },
   actualPlan: {
     title: '実際の実行プランの表示',
-    url: 'https://learn.microsoft.com/en-us/sql/relational-databases/performance/display-an-actual-execution-plan',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/performance/display-an-actual-execution-plan',
   },
   estimatedPlan: {
     title: '推定実行プランの表示',
-    url: 'https://learn.microsoft.com/en-us/sql/relational-databases/performance/display-the-estimated-execution-plan',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/performance/display-the-estimated-execution-plan',
   },
   planGuide: {
     title: '実行プラン ガイド',
-    url: 'https://learn.microsoft.com/en-us/sql/relational-databases/performance/execution-plans',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/performance/execution-plans',
   },
   indexGuide: {
     title: 'SQL Server と Azure SQL のインデックス設計ガイド',
-    url: 'https://learn.microsoft.com/en-us/sql/relational-databases/sql-server-index-design-guide',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/sql-server-index-design-guide',
   },
   includedColumns: {
     title: '付加列を含むインデックスの作成',
-    url: 'https://learn.microsoft.com/en-us/sql/relational-databases/indexes/create-indexes-with-included-columns',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/indexes/create-indexes-with-included-columns',
   },
   filteredIndexes: {
     title: 'フィルター選択されたインデックスの作成',
-    url: 'https://learn.microsoft.com/en-us/sql/relational-databases/indexes/create-filtered-indexes',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/indexes/create-filtered-indexes',
   },
   missingIndexes: {
     title: '欠落インデックスの提案の調整',
-    url: 'https://learn.microsoft.com/en-us/sql/relational-databases/indexes/tune-nonclustered-missing-index-suggestions',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/indexes/tune-nonclustered-missing-index-suggestions',
   },
   indexUsage: {
     title: 'sys.dm_db_index_usage_stats',
-    url: 'https://learn.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-db-index-usage-stats-transact-sql',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/system-dynamic-management-views/sys-dm-db-index-usage-stats-transact-sql',
   },
   statistics: {
     title: '統計',
-    url: 'https://learn.microsoft.com/en-us/sql/relational-databases/statistics/statistics',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/statistics/statistics',
   },
   statisticsOptions: {
     title: '統計の自動構成オプション',
-    url: 'https://learn.microsoft.com/en-us/sql/relational-databases/statistics/statistics',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/statistics/statistics',
   },
   constants: {
     title: 'Transact-SQLの定数',
-    url: 'https://learn.microsoft.com/en-us/sql/t-sql/data-types/constants-transact-sql#date-time-constants',
+    url: 'https://learn.microsoft.com/ja-jp/sql/t-sql/data-types/constants-transact-sql#date-time-constants',
   },
   psp: {
     title: 'パラメーター センシティブ プラン最適化',
-    url: 'https://learn.microsoft.com/en-us/sql/relational-databases/performance/parameter-sensitive-plan-optimization',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/performance/parameter-sensitive-plan-optimization',
   },
   memoryGrants: {
     title: 'メモリ許可による低速化またはメモリ不足のトラブルシューティング',
-    url: 'https://learn.microsoft.com/en-us/troubleshoot/sql/database-engine/performance/troubleshoot-memory-grant-issues',
+    url: 'https://learn.microsoft.com/ja-jp/troubleshoot/sql/database-engine/performance/troubleshoot-memory-grant-issues',
   },
   intelligentInsights: {
     title: 'Intelligent Insights によるデータベース パフォーマンスの監視',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-sql/database/intelligent-insights-overview',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/database/intelligent-insights-overview',
   },
   indexMaintenance: {
     title: 'インデックス メンテナンスの最適化',
-    url: 'https://learn.microsoft.com/en-us/sql/relational-databases/indexes/reorganize-and-rebuild-indexes',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/indexes/reorganize-and-rebuild-indexes',
   },
   integrity: {
     title: 'DBCC CHECKDB',
-    url: 'https://learn.microsoft.com/en-us/sql/t-sql/database-console-commands/dbcc-checkdb-transact-sql',
+    url: 'https://learn.microsoft.com/ja-jp/sql/t-sql/database-console-commands/dbcc-checkdb-transact-sql',
   },
   automaticTuning: {
     title: 'Azure SQL Database の自動チューニング',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-sql/database/automatic-tuning-overview',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/database/automatic-tuning-overview',
   },
   maxdop: {
     title: 'max degree of parallelism サーバー構成オプション',
-    url: 'https://learn.microsoft.com/en-us/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option',
+    url: 'https://learn.microsoft.com/ja-jp/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option',
   },
   memory: {
     title: 'サーバー メモリ構成オプション',
-    url: 'https://learn.microsoft.com/en-us/sql/database-engine/configure-windows/server-memory-server-configuration-options',
+    url: 'https://learn.microsoft.com/ja-jp/sql/database-engine/configure-windows/server-memory-server-configuration-options',
   },
   tempdb: {
     title: 'tempdb の容量と配置の計画',
-    url: 'https://learn.microsoft.com/en-us/sql/relational-databases/databases/tempdb-database',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/databases/tempdb-database',
   },
   resourceGovernor: {
     title: 'リソース ガバナー',
-    url: 'https://learn.microsoft.com/en-us/sql/relational-databases/resource-governor/resource-governor',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/resource-governor/resource-governor',
   },
   scopedConfiguration: {
     title: 'ALTER DATABASE SCOPED CONFIGURATION',
-    url: 'https://learn.microsoft.com/en-us/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql',
+    url: 'https://learn.microsoft.com/ja-jp/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql',
   },
   elasticPools: {
     title: 'Azure SQL Database エラスティック プール',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-sql/database/elastic-pool-overview',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/database/elastic-pool-overview',
   },
   scaling: {
     title: '単一データベース リソースのスケーリング',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-sql/database/single-database-scale',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/database/single-database-scale',
   },
   serverless: {
     title: 'Azure SQL Database のサーバーレス コンピューティング レベル',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-sql/database/serverless-tier-overview',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/database/serverless-tier-overview',
   },
   iqp: {
     title: 'インテリジェント クエリ処理の詳細',
-    url: 'https://learn.microsoft.com/en-us/sql/relational-databases/performance/intelligent-query-processing-details',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/performance/intelligent-query-processing-details',
   },
 } as const
 

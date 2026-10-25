@@ -3,107 +3,107 @@ import type { Question } from '../../../lib/exam.ts'
 const refs = {
   entraOverview: {
     title: 'Microsoft Entra authentication for Azure SQL',
-    url: 'https://learn.microsoft.com/azure/azure-sql/database/authentication-aad-overview?view=azuresql',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/database/authentication-aad-overview?view=azuresql',
   },
   entraConfig: {
     title: 'Configure and manage Microsoft Entra authentication with Azure SQL',
-    url: 'https://learn.microsoft.com/azure/azure-sql/database/authentication-aad-configure?view=azuresql',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/database/authentication-aad-configure?view=azuresql',
   },
   sqlDatabaseAccess: {
     title: 'Authorize database access to Azure SQL Database',
-    url: 'https://learn.microsoft.com/azure/azure-sql/database/logins-create-manage?view=azuresql',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/database/logins-create-manage?view=azuresql',
   },
   managedInstanceEntra: {
     title: 'Tutorial: Secure with Microsoft Entra logins - Azure SQL Managed Instance',
-    url: 'https://learn.microsoft.com/azure/azure-sql/managed-instance/aad-security-configure-tutorial?view=azuresql',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/managed-instance/aad-security-configure-tutorial?view=azuresql',
   },
   sqlServerEntra: {
     title: 'Microsoft Entra authentication for SQL Server',
-    url: 'https://learn.microsoft.com/sql/relational-databases/security/authentication-access/azure-ad-authentication-sql-server-overview?view=sql-server-ver17',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/security/authentication-access/azure-ad-authentication-sql-server-overview?view=sql-server-ver17',
   },
   permissions: {
     title: 'Permissions (Database Engine)',
-    url: 'https://learn.microsoft.com/sql/relational-databases/security/permissions-database-engine?view=sql-server-ver17',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/security/permissions-database-engine?view=sql-server-ver17',
   },
   databaseRoles: {
     title: 'Database-level roles',
-    url: 'https://learn.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver17',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver17',
   },
   controlDataPlane: {
     title: 'Azure control plane and data plane',
-    url: 'https://learn.microsoft.com/azure/azure-resource-manager/management/control-plane-and-data-plane',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-resource-manager/management/control-plane-and-data-plane',
   },
   tde: {
     title: 'Transparent data encryption for SQL Database and SQL Managed Instance',
-    url: 'https://learn.microsoft.com/azure/azure-sql/database/transparent-data-encryption-tde-overview?view=azuresql',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/database/transparent-data-encryption-tde-overview?view=azuresql',
   },
   alwaysEncrypted: {
     title: 'Always Encrypted',
-    url: 'https://learn.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-ver17',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-ver17',
   },
   enclaves: {
     title: 'Always Encrypted with secure enclaves',
-    url: 'https://learn.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves?view=sql-server-ver17',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/security/encryption/always-encrypted-enclaves?view=sql-server-ver17',
   },
   encryption: {
     title: 'SQL Server encryption',
-    url: 'https://learn.microsoft.com/sql/relational-databases/security/encryption/sql-server-encryption?view=sql-server-ver17',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/security/encryption/sql-server-encryption?view=sql-server-ver17',
   },
   columnEncryption: {
     title: 'Encrypt a column of data',
-    url: 'https://learn.microsoft.com/sql/relational-databases/security/encryption/encrypt-a-column-of-data?view=sql-server-ver17',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/security/encryption/encrypt-a-column-of-data?view=sql-server-ver17',
   },
   tls: {
     title: 'Encrypt connections to SQL Server by importing a certificate',
-    url: 'https://learn.microsoft.com/sql/database-engine/configure-windows/configure-sql-server-encryption?view=sql-server-ver17',
+    url: 'https://learn.microsoft.com/ja-jp/sql/database-engine/configure-windows/configure-sql-server-encryption?view=sql-server-ver17',
   },
   connectivity: {
     title: 'Azure SQL Database connectivity settings',
-    url: 'https://learn.microsoft.com/azure/azure-sql/database/connectivity-settings?view=azuresql',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/database/connectivity-settings?view=azuresql',
   },
   firewall: {
     title: 'Azure SQL Database IP firewall rules',
-    url: 'https://learn.microsoft.com/azure/azure-sql/database/firewall-configure?view=azuresql',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/database/firewall-configure?view=azuresql',
   },
   networkControls: {
     title: 'Azure SQL Database network access controls',
-    url: 'https://learn.microsoft.com/azure/azure-sql/database/network-access-controls-overview?view=azuresql',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/database/network-access-controls-overview?view=azuresql',
   },
   serviceEndpoints: {
     title: 'Use virtual network service endpoints and rules for Azure SQL Database',
-    url: 'https://learn.microsoft.com/azure/azure-sql/database/vnet-service-endpoint-rule-overview?view=azuresql',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/database/vnet-service-endpoint-rule-overview?view=azuresql',
   },
   privateLink: {
     title: 'Azure Private Link for Azure SQL Database',
-    url: 'https://learn.microsoft.com/azure/azure-sql/database/private-endpoint-overview?view=azuresql',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/database/private-endpoint-overview?view=azuresql',
   },
   privateDns: {
     title: 'Azure private endpoint DNS configuration',
-    url: 'https://learn.microsoft.com/azure/private-link/private-endpoint-dns',
+    url: 'https://learn.microsoft.com/ja-jp/azure/private-link/private-endpoint-dns',
   },
   classification: {
     title: 'Data Discovery & Classification',
-    url: 'https://learn.microsoft.com/azure/azure-sql/database/data-discovery-and-classification-overview?view=azuresql',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/database/data-discovery-and-classification-overview?view=azuresql',
   },
   auditing: {
     title: 'Auditing for Azure SQL Database',
-    url: 'https://learn.microsoft.com/azure/azure-sql/database/auditing-overview?view=azuresql',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/database/auditing-overview?view=azuresql',
   },
   masking: {
     title: 'Dynamic data masking',
-    url: 'https://learn.microsoft.com/azure/azure-sql/database/dynamic-data-masking-overview?view=azuresql',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/database/dynamic-data-masking-overview?view=azuresql',
   },
   rowSecurity: {
     title: 'Row-level security',
-    url: 'https://learn.microsoft.com/sql/relational-databases/security/row-level-security?view=sql-server-ver17',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/security/row-level-security?view=sql-server-ver17',
   },
   ledgerVerification: {
     title: 'Database verification for ledger',
-    url: 'https://learn.microsoft.com/sql/relational-databases/security/ledger/ledger-database-verification?view=sql-server-ver17',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/security/ledger/ledger-database-verification?view=sql-server-ver17',
   },
   changeTracking: {
     title: 'Track data changes',
-    url: 'https://learn.microsoft.com/sql/relational-databases/track-changes/track-data-changes-sql-server?view=sql-server-ver17',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/track-changes/track-data-changes-sql-server?view=sql-server-ver17',
   },
 } as const
 

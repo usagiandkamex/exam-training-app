@@ -132,11 +132,15 @@ function Quiz({ exam, session, onAnswer, onNext }: {
 }) {
   const [selected, setSelected] = useState<string[]>([])
   const heading = useRef<HTMLHeadingElement>(null)
+  const questionTop = useRef<HTMLDivElement>(null)
   const feedback = useRef<HTMLDivElement>(null)
   const question = session.questions[session.index]
   const answer = session.answers.find((item) => item.questionId === question.id)
   const multiple = question.correctChoiceIds.length > 1
-  useEffect(() => { heading.current?.focus() }, [])
+  useEffect(() => {
+    heading.current?.focus({ preventScroll: true })
+    questionTop.current?.scrollIntoView({ block: 'start', behavior: 'instant' })
+  }, [])
   useEffect(() => { if (answer) feedback.current?.focus() }, [answer])
 
   return <div className="quiz-shell">
@@ -146,7 +150,7 @@ function Quiz({ exam, session, onAnswer, onNext }: {
     <Stats session={session} />
     <ProgressBar value={session.answers.length} max={session.questions.length} aria-label="回答の進捗" />
     <Card className="question-card">
-      <div className="question-meta">
+      <div ref={questionTop} className="question-meta">
         <span>第 {session.index + 1} 問 / 全 {session.questions.length} 問</span>
         <Badge appearance="tint">{exam.domains.find((domain) => domain.id === question.domainId)!.name}</Badge>
       </div>

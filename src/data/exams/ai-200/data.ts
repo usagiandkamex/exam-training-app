@@ -3,143 +3,143 @@ import type { Question } from '../../../lib/exam.ts'
 const refs = {
   cosmosPython: [{
     title: 'Get started with Azure Cosmos DB for NoSQL using Python',
-    url: 'https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/how-to-python-get-started',
+    url: 'https://learn.microsoft.com/ja-jp/azure/cosmos-db/nosql/how-to-python-get-started',
   }],
   cosmosSdk: [{
     title: 'Azure Cosmos DB Python SDK: ContainerProxy',
-    url: 'https://learn.microsoft.com/en-us/python/api/azure-cosmos/azure.cosmos.containerproxy?view=azure-python',
+    url: 'https://learn.microsoft.com/ja-jp/python/api/azure-cosmos/azure.cosmos.containerproxy?view=azure-python',
   }],
   cosmosPerformance: [{
     title: 'Performance tips for Azure Cosmos DB Python SDK',
-    url: 'https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/performance-tips-python-sdk',
+    url: 'https://learn.microsoft.com/ja-jp/azure/cosmos-db/nosql/performance-tips-python-sdk',
   }],
   cosmosParameters: [{
     title: 'Parameterized queries in Cosmos DB',
-    url: 'https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/query/parameterized-queries',
+    url: 'https://learn.microsoft.com/ja-jp/azure/cosmos-db/nosql/query/parameterized-queries',
   }],
   cosmosTransactions: [{
     title: 'Transactions and optimistic concurrency control',
-    url: 'https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/database-transactions-optimistic-concurrency',
+    url: 'https://learn.microsoft.com/ja-jp/azure/cosmos-db/nosql/database-transactions-optimistic-concurrency',
   }],
   cosmosConsistency: [{
     title: 'Consistency levels in Azure Cosmos DB',
-    url: 'https://learn.microsoft.com/en-us/azure/cosmos-db/consistency-levels',
+    url: 'https://learn.microsoft.com/ja-jp/azure/cosmos-db/consistency-levels',
   }],
   cosmosRu: [{
     title: 'Request Units in Azure Cosmos DB',
-    url: 'https://learn.microsoft.com/en-us/azure/cosmos-db/request-units',
+    url: 'https://learn.microsoft.com/ja-jp/azure/cosmos-db/request-units',
   }],
   cosmosPartitions: [{
     title: 'Partitioning and horizontal scaling in Azure Cosmos DB',
-    url: 'https://learn.microsoft.com/en-us/azure/cosmos-db/partitioning-overview',
+    url: 'https://learn.microsoft.com/ja-jp/azure/cosmos-db/partitioning-overview',
   }],
   cosmosIndex: [{
     title: 'Indexing policies in Azure Cosmos DB',
-    url: 'https://learn.microsoft.com/en-us/azure/cosmos-db/index-policy',
+    url: 'https://learn.microsoft.com/ja-jp/azure/cosmos-db/index-policy',
   }],
   cosmosVector: [{
     title: 'Vector search in Azure Cosmos DB for NoSQL',
-    url: 'https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/vector-search',
+    url: 'https://learn.microsoft.com/ja-jp/azure/cosmos-db/nosql/vector-search',
   }],
   cosmosFeed: [{
     title: 'Change feed processor in Azure Cosmos DB',
-    url: 'https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/change-feed-processor',
+    url: 'https://learn.microsoft.com/ja-jp/azure/cosmos-db/nosql/change-feed-processor',
   }],
   cosmosFeedModes: [{
     title: 'Change feed modes in Azure Cosmos DB',
-    url: 'https://learn.microsoft.com/en-us/azure/cosmos-db/change-feed-modes',
+    url: 'https://learn.microsoft.com/ja-jp/azure/cosmos-db/change-feed-modes',
   }],
   pgPython: [{
     title: 'Use Python to connect and query Azure Database for PostgreSQL',
-    url: 'https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/connect-python',
+    url: 'https://learn.microsoft.com/ja-jp/azure/postgresql/flexible-server/connect-python',
   }],
   pgVector: [{
     title: 'Enable and use pgvector in Azure Database for PostgreSQL',
-    url: 'https://learn.microsoft.com/en-us/azure/postgresql/extensions/how-to-use-pgvector',
+    url: 'https://learn.microsoft.com/ja-jp/azure/postgresql/extensions/how-to-use-pgvector',
   }],
   pgOptimize: [{
     title: 'Optimize performance when using pgvector',
-    url: 'https://learn.microsoft.com/en-us/azure/postgresql/extensions/how-to-optimize-performance-pgvector',
+    url: 'https://learn.microsoft.com/ja-jp/azure/postgresql/extensions/how-to-optimize-performance-pgvector',
   }],
   pgCompute: [{
     title: 'Compute options in Azure Database for PostgreSQL',
-    url: 'https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/concepts-compute',
+    url: 'https://learn.microsoft.com/ja-jp/azure/postgresql/flexible-server/concepts-compute',
   }],
   pgStorage: [{
     title: 'Storage in Azure Database for PostgreSQL',
-    url: 'https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/concepts-storage',
+    url: 'https://learn.microsoft.com/ja-jp/azure/postgresql/flexible-server/concepts-storage',
   }],
   pgPool: [{
     title: 'PgBouncer in Azure Database for PostgreSQL',
-    url: 'https://learn.microsoft.com/en-us/azure/postgresql/connectivity/concepts-pgbouncer',
+    url: 'https://learn.microsoft.com/ja-jp/azure/postgresql/connectivity/concepts-pgbouncer',
   }],
   pgPoolStrategy: [{
     title: 'Connection pooling strategy using PgBouncer',
-    url: 'https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/concepts-connection-pooling-best-practices',
+    url: 'https://learn.microsoft.com/ja-jp/azure/postgresql/flexible-server/concepts-connection-pooling-best-practices',
   }],
   pgTls: [{
     title: 'Transport Layer Security in Azure Database for PostgreSQL',
-    url: 'https://learn.microsoft.com/en-us/azure/postgresql/security/security-tls',
+    url: 'https://learn.microsoft.com/ja-jp/azure/postgresql/security/security-tls',
   }],
   pgSchema: [{
     title: 'PostgreSQL semi-structured data and JSONB',
-    url: 'https://learn.microsoft.com/en-us/postgresql/citus/semi-structured-data?view=citus-14',
+    url: 'https://learn.microsoft.com/ja-jp/postgresql/citus/semi-structured-data?view=citus-14',
   }],
   pgRelational: [{
     title: 'PostgreSQL data modeling and related tables',
-    url: 'https://learn.microsoft.com/en-us/postgresql/citus/data-modeling?view=citus-14',
+    url: 'https://learn.microsoft.com/ja-jp/postgresql/citus/data-modeling?view=citus-14',
   }],
   pgSearch: [{
     title: 'PostgreSQL product search, JSONB indexes, and full-text search',
-    url: 'https://learn.microsoft.com/en-us/postgresql/citus/faceted-search?view=citus-14',
+    url: 'https://learn.microsoft.com/ja-jp/postgresql/citus/faceted-search?view=citus-14',
   }],
   pgPerformance: [{
     title: 'Troubleshoot high CPU utilization in Azure Database for PostgreSQL',
-    url: 'https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-high-cpu-utilization',
+    url: 'https://learn.microsoft.com/ja-jp/azure/postgresql/flexible-server/how-to-high-cpu-utilization',
   }],
   redisOverview: [{
     title: 'What is Azure Managed Redis?',
-    url: 'https://learn.microsoft.com/en-us/azure/redis/overview',
+    url: 'https://learn.microsoft.com/ja-jp/azure/redis/overview',
   }],
   redisPython: [{
     title: 'Create a Python app with Azure Managed Redis',
-    url: 'https://learn.microsoft.com/en-us/azure/redis/python-get-started',
+    url: 'https://learn.microsoft.com/ja-jp/azure/redis/python-get-started',
   }],
   redisDotnet: [{
     title: 'Use Azure Managed Redis in .NET Core',
-    url: 'https://learn.microsoft.com/en-us/azure/redis/dotnet',
+    url: 'https://learn.microsoft.com/ja-jp/azure/redis/dotnet',
   }],
   redisNotifications: [{
     title: 'Enable Redis keyspace notifications',
-    url: 'https://learn.microsoft.com/en-us/azure/redis/enable-redis-keyspace-notifications',
+    url: 'https://learn.microsoft.com/ja-jp/azure/redis/enable-redis-keyspace-notifications',
   }],
   redisModules: [{
     title: 'Use Redis modules with Azure Managed Redis',
-    url: 'https://learn.microsoft.com/en-us/azure/redis/redis-modules',
+    url: 'https://learn.microsoft.com/ja-jp/azure/redis/redis-modules',
   }],
   redisVector: [{
     title: 'Vector embeddings and vector search in Azure Managed Redis',
-    url: 'https://learn.microsoft.com/en-us/azure/redis/overview-vector-similarity',
+    url: 'https://learn.microsoft.com/ja-jp/azure/redis/overview-vector-similarity',
   }],
   redisSemantic: [{
     title: 'Use Azure Managed Redis as a semantic cache',
-    url: 'https://learn.microsoft.com/en-us/azure/redis/tutorial-semantic-cache',
+    url: 'https://learn.microsoft.com/ja-jp/azure/redis/tutorial-semantic-cache',
   }],
   redisMemory: [{
     title: 'Memory management for Azure Managed Redis',
-    url: 'https://learn.microsoft.com/en-us/azure/redis/best-practices-memory-management',
+    url: 'https://learn.microsoft.com/ja-jp/azure/redis/best-practices-memory-management',
   }],
   redisDevelopment: [{
     title: 'Development with Azure Managed Redis',
-    url: 'https://learn.microsoft.com/en-us/azure/redis/best-practices-development',
+    url: 'https://learn.microsoft.com/ja-jp/azure/redis/best-practices-development',
   }],
   redisConnection: [{
     title: 'Connection resilience with Azure Managed Redis',
-    url: 'https://learn.microsoft.com/en-us/azure/redis/best-practices-connection',
+    url: 'https://learn.microsoft.com/ja-jp/azure/redis/best-practices-connection',
   }],
   cacheAside: [{
     title: 'Cache-Aside pattern',
-    url: 'https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside',
+    url: 'https://learn.microsoft.com/ja-jp/azure/architecture/patterns/cache-aside',
   }],
 }
 
