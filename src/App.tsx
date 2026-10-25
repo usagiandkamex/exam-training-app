@@ -88,12 +88,12 @@ function Setup({ onStart }: { onStart: (exam: Exam, domains: string[], limit: nu
           <Badge appearance="outline">試験はリクエストに応じて追加</Badge>
           <h2>次に学びたい試験は？</h2>
           <p>Azure・AWS・CISSPなど、追加したい試験をGitHubのissueでお知らせください。</p>
-          <p className="muted">現在は体験デモのみです。DP-300の正式な問題集は別issueで追加予定です。</p>
+          <p className="muted">DP-300の非公式問題集と、操作を試せる体験デモを公開しています。</p>
           <Link href={requestUrl} target="_blank" rel="noopener noreferrer">試験の追加をリクエスト（別タブ） →</Link>
         </Card>
         {exam.blueprint && <Card className="guide-card">
           <h2>問題集の根拠</h2>
-          <p>収録 {exam.questions.length}問 / 本番 {exam.blueprint.questionCount.min}〜{exam.blueprint.questionCount.max}問</p>
+          <p>収録 {exam.questions.length}問 / 問題数の目安 {exam.blueprint.questionCount.min}〜{exam.blueprint.questionCount.max}問</p>
           <p>学習要領確認日：{exam.blueprint.reviewedOn}</p>
           <ul>{exam.domains.map((domain) => <li key={domain.id}>{domain.name}：{domain.weight?.min}〜{domain.weight?.max}%</li>)}</ul>
           <Link href={exam.blueprint.url} target="_blank" rel="noopener noreferrer">公式の学習要領（別タブ）</Link>
