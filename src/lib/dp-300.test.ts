@@ -38,7 +38,7 @@ test('DP-300 distinguishes the guide revision and the general question-count ref
   assert.ok(dp300.description.includes('2026年10月27日'))
   assert.ok(dp300.description.includes('Microsoft認定試験全般の目安'))
   assert.ok(dp300.usageReview)
-  assert.ok(dp300.usageReview.notes.includes('https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience'))
+  assert.ok(dp300.usageReview.notes.split(/\s+/).includes('https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience'))
   assert.equal(dp300.blueprint?.reviewedOn, '2026-10-25')
   assert.equal(dp300.usageReview.reviewedOn, '2026-10-25')
 })
