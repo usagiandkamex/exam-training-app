@@ -371,15 +371,15 @@ const questions: Question[] = [
   {
     id: 'ai200-containers-015',
     domainId: 'containers',
-    prompt: '同じACRタスクを何度実行しても過去の成果物を上書きせず、タスク実行とイメージを対応付けたいと考えています。タグの材料として適切なものはどれですか。',
+    prompt: '同じACRタスクYAMLを検証用と本番用のレジストリで再利用します。出力イメージ名に、実行先ACRの完全なログインサーバー名を埋め込む実行変数はどれですか。',
     choices: [
-      { id: 'a', text: 'タスク実行ごとに変わるRun.ID' },
-      { id: 'b', text: '毎回固定したreleaseという文字列' },
-      { id: 'c', text: '再ビルドでも変わらないGitコミットだけ' },
-      { id: 'd', text: '同じ日に何度実行しても変わらない日付だけ' },
+      { id: 'a', text: 'Run.Registry' },
+      { id: 'b', text: 'Run.ID' },
+      { id: 'c', text: 'Run.Date' },
+      { id: 'd', text: 'Run.RegistryName' },
     ],
     correctChoiceIds: ['a'],
-    explanation: '実行変数のRun.IDは個々のタスク実行を区別でき、成果物との対応に使えます。固定文字列はもちろん、同じソースの再ビルドや同日中の複数実行では、コミットや日付だけのタグも衝突する可能性があります。',
+    explanation: 'Run.Registryはレジストリの完全修飾ドメイン名を表し、実行先に応じたイメージ参照を組み立てられます。Run.RegistryNameはドメイン部分を含まないレジストリ名です。Run.IDとRun.Dateは実行の識別情報や日時であり、ログインサーバー名ではありません。',
     references: refs.acrYaml,
   },
   {
@@ -595,7 +595,7 @@ const questions: Question[] = [
   {
     id: 'ai200-containers-031',
     domainId: 'containers',
-    prompt: '本番ホストがタグなしマニフェストをダイジェストで取得しています。容量削減のため、そのレジストリへタグなし保持ポリシーを適用する際の重要なリスクはどれですか。',
+    prompt: '本番ホストがPremium ACRのタグなしDockerマニフェストをダイジェストで取得しています。対象形式に対応するタグなし保持ポリシーを適用する際の重要なリスクはどれですか。',
     choices: [
       { id: 'a', text: 'ダイジェスト参照を使うと自動的に永久保持される' },
       { id: 'b', text: '使用中でもマニフェストが削除され、後続のイメージ取得が失敗し得る' },
@@ -637,7 +637,7 @@ const questions: Question[] = [
   {
     id: 'ai200-containers-034',
     domainId: 'containers',
-    prompt: 'ACRのタグなし保持ポリシーを有効にしたまま、特定の監査用マニフェストだけを削除対象から除外します。適切な操作はどれですか。',
+    prompt: 'Premium ACRのタグなし保持ポリシーを有効にしたまま、特定の監査用Dockerマニフェストだけを削除対象から除外します。適切な操作はどれですか。',
     choices: [
       { id: 'a', text: 'マニフェストのread-enabledをfalseにする' },
       { id: 'b', text: '監査担当者の端末にダイジェストを記録するだけにする' },
@@ -707,7 +707,7 @@ const questions: Question[] = [
   {
     id: 'ai200-containers-039',
     domainId: 'containers',
-    prompt: '権限は正しいのに、ファイアウォールで保護されたACRへのイメージimportが失敗します。ACR importを利用するネットワーク制限付きレジストリで確認すべき設定はどれですか。',
+    prompt: '権限は正しいのに、ファイアウォールで保護されたPremium ACRへのイメージimportが失敗します。ACR importを利用するネットワーク制限付きレジストリで確認すべき設定はどれですか。',
     choices: [
       { id: 'a', text: 'すべてのレジストリの管理者アカウントを有効にする設定' },
       { id: 'b', text: '操作端末へローカルDocker Engineを導入しているか' },
@@ -777,7 +777,7 @@ const questions: Question[] = [
   {
     id: 'ai200-containers-044',
     domainId: 'containers',
-    prompt: 'App ServiceのLinuxカスタムコンテナはモデル初期化に数分かかります。出力から初期化は進んでいますが、開始待ち時間超過でプラットフォームが再起動しています。許容範囲内で起動猶予を延長する設定はどれですか。',
+    prompt: 'サイドカー方式ではないApp ServiceのLinuxカスタムコンテナはモデル初期化に数分かかります。出力から初期化は進んでいますが、開始待ち時間超過でプラットフォームが再起動しています。許容範囲内で起動猶予を延長する設定はどれですか。',
     choices: [
       { id: 'a', text: 'WEBSITES_PORTだけを大きな数値へ変更する' },
       { id: 'b', text: '利用者側のHTTPクライアントの待ち時間だけを延ばす' },
@@ -791,7 +791,7 @@ const questions: Question[] = [
   {
     id: 'ai200-containers-045',
     domainId: 'containers',
-    prompt: 'ABACを有効にしていないACRから、App Serviceがシステム割り当てマネージドIDでイメージを取得します。IDの有効化後、必要な設定を2つ選んでください。',
+    prompt: 'サイドカー方式ではないLinuxのApp Serviceカスタムコンテナが、ABACを有効にしていないACRからシステム割り当てマネージドIDでイメージを取得します。IDの有効化後、必要な設定を2つ選んでください。',
     choices: [
       { id: 'a', text: 'そのIDへ対象ACRのAcrPullロールを割り当てる' },
       { id: 'b', text: 'アプリのHTTP接続を匿名にすればACRも匿名取得できるとみなす' },
@@ -805,7 +805,7 @@ const questions: Question[] = [
   {
     id: 'ai200-containers-046',
     domainId: 'containers',
-    prompt: 'App Serviceにユーザー割り当てマネージドIDを関連付け、そのIDでACRから取得させます。acrUserManagedIdentityIDへ設定する識別子はどれですか。',
+    prompt: 'サイドカー方式ではないLinuxのApp Serviceカスタムコンテナにユーザー割り当てマネージドIDを関連付け、そのIDでACRから取得させます。acrUserManagedIdentityIDへ設定する識別子はどれですか。',
     choices: [
       { id: 'a', text: 'ユーザー割り当てマネージドIDのオブジェクトID' },
       { id: 'b', text: 'ユーザー割り当てマネージドIDのクライアントID' },
@@ -819,7 +819,7 @@ const questions: Question[] = [
   {
     id: 'ai200-containers-047',
     domainId: 'containers',
-    prompt: 'App ServiceのIDにはACRの取得権限がありますが、ACRをプライベートエンドポイント専用にした直後から起動できません。権限追加より先に調べるべき観点はどれですか。',
+    prompt: 'Linuxカスタムコンテナを使うApp ServiceのIDにはPremium ACRの取得権限がありますが、ACRをプライベートエンドポイント専用にした直後から起動できません。権限追加より先に調べるべき観点はどれですか。',
     choices: [
       { id: 'a', text: 'Webアプリ利用者向けの受信IP制限だけが許可されているか' },
       { id: 'b', text: '公開DNSだけを使う外部端末で名前が引けるかだけを確認する' },
@@ -833,7 +833,7 @@ const questions: Question[] = [
   {
     id: 'ai200-containers-048',
     domainId: 'containers',
-    prompt: 'App Serviceが仮想ネットワーク内のACRプライベートエンドポイントからイメージを取得する構成です。認証済みで、DNSも正しい場合に必要なネットワーク側の構成を2つ選んでください。',
+    prompt: 'StandardプランのApp Serviceで、サイドカー方式ではないLinuxカスタムコンテナを使います。仮想ネットワーク内のPremium ACRプライベートエンドポイントからイメージを取得します。認証済みでDNSも正しい場合、必要なネットワーク側の構成を2つ選んでください。',
     choices: [
       { id: 'a', text: 'Webアプリの受信アクセス制限だけをすべて削除する' },
       { id: 'b', text: '到達可能な仮想ネットワークへApp Serviceを統合する' },
@@ -1057,16 +1057,16 @@ const questions: Question[] = [
   {
     id: 'ai200-containers-064',
     domainId: 'containers',
-    prompt: 'App Serviceのアプリ設定は保存時に暗号化されていますが、推論APIのキーを複数アプリで集中管理し、更新履歴や監査も保管庫側で管理したいと考えています。適切な方針はどれですか。',
+    prompt: 'App ServiceのLinuxカスタムコンテナで使うモデルファイルを調べるため、SCMサイトのコンソールを開きました。そこでは推論プロセスもモデルファイルも見えません。この結果の適切な解釈はどれですか。',
     choices: [
-      { id: 'a', text: '保存時暗号化されているため、キーの管理先を分離する方法は存在しない' },
-      { id: 'b', text: 'キーをコンテナイメージに移し、配布先すべてへ埋め込む' },
-      { id: 'c', text: 'キーをKey Vaultへ保管し、各アプリの設定から参照する' },
-      { id: 'd', text: 'キーを各アプリの設定へ個別コピーし、保管庫との同期は不要とみなす' },
+      { id: 'a', text: 'SCM側で見えなければ、アプリイメージにもファイルが存在しないと断定できる' },
+      { id: 'b', text: 'SCMとアプリは常に同じルートファイルシステムとプロセス一覧を共有する' },
+      { id: 'c', text: 'SCMは別コンテナなので、アプリコンテナへの接続経路で確認する必要がある' },
+      { id: 'd', text: 'SCMコンソールを開くと必ずアプリコンテナへ自動で接続先が切り替わる' },
     ],
     correctChoiceIds: ['c'],
-    explanation: 'Key Vault参照は設定とシークレットの管理を分離し、保管庫の集中管理や監査を利用できます。設定の保存時暗号化はそれを妨げません。イメージへの埋め込みや各アプリへの独立コピーでは、保管庫を唯一の管理先として更新する要件を満たせません。',
-    references: refs.appVault,
+    explanation: 'SCMサイトはアプリとは別コンテナで動きます。SCM側のファイルやプロセスがアプリと同一とは限らず、そこで見えないだけではアプリ内の不在を証明できません。コンソールを開くだけでアプリ側へ自動切り替えされるわけでもありません。',
+    references: refs.appLinuxFaq,
   },
   {
     id: 'ai200-containers-065',
@@ -1214,7 +1214,7 @@ const questions: Question[] = [
     prompt: 'Container Appsの変更計画をレビューしています。新しいリビジョンを作成する変更を2つ選んでください。',
     choices: [
       { id: 'a', text: '既存リビジョン間のHTTPトラフィック重みだけを変更する' },
-      { id: 'b', text: 'コンテナが参照するイメージを別のビルドへ変更する' },
+      { id: 'b', text: 'テンプレートのイメージ参照を、別ビルドの一意タグへ変更する' },
       { id: 'c', text: 'アプリのシークレット値だけを変更する' },
       { id: 'd', text: 'コンテナアプリのスケールルールを変更する' },
     ],
@@ -1267,7 +1267,7 @@ const questions: Question[] = [
   {
     id: 'ai200-containers-079',
     domainId: 'containers',
-    prompt: 'Container Appsの新リビジョンを一般利用者へは配信せず、検証担当者だけが専用URLで呼び出します。アプリ本体のHTTP重みを旧版100%のままにする方法はどれですか。',
+    prompt: 'Container Appsで通常のアプリURLは旧版へ100%配信したまま、新リビジョンを専用URLで検証します。検証担当者へのアクセス制限は別途構成済みです。適切な方法はどれですか。',
     choices: [
       { id: 'a', text: '新リビジョンを非アクティブにして通常のアプリURLを渡す' },
       { id: 'b', text: 'アクティブな新リビジョンにラベルを付け、ラベルURLを渡す' },
@@ -1275,7 +1275,7 @@ const questions: Question[] = [
       { id: 'd', text: '全トラフィックを新リビジョンへ切り替えてから検証する' },
     ],
     correctChoiceIds: ['b'],
-    explanation: 'ラベルURLはアプリ本体のトラフィック重みとは独立に特定リビジョンへ到達させます。非アクティブな版は処理できません。アプリ本体の配分を半分または全部切り替えると、一般利用者へ配信しない条件に反します。',
+    explanation: 'ラベルURLはアプリ本体の重みとは独立に特定リビジョンへ到達させます。ラベル自体は利用者のアクセス制限ではありません。非アクティブな版は処理できず、通常URLの配分を新版へ変更すると旧版100%を維持する条件に反します。',
     references: refs.acaRevisions,
   },
   {
@@ -2177,7 +2177,7 @@ const questions: Question[] = [
   {
     id: 'ai200-containers-144',
     domainId: 'containers',
-    prompt: 'AKSで新しいNetworkPolicyを適用した後、特定のクライアントPodからだけ推論Serviceへ接続できなくなりました。対象PodとServiceは正常です。適切な初動はどれですか。',
+    prompt: 'NetworkPolicyの強制が有効なAKSで新しいポリシーを適用した後、特定のクライアントPodからだけ推論Serviceへ接続できなくなりました。対象PodとServiceは正常です。適切な初動はどれですか。',
     choices: [
       { id: 'a', text: 'ポリシーのPod選択条件、送受信方向、許可ポートとクライアントの一致を確認する' },
       { id: 'b', text: 'NetworkPolicyは通信に影響しないとみなし無視する' },

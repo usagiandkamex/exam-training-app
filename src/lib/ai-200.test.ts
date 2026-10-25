@@ -37,8 +37,8 @@ test('AI-200 records the guide revision, general question-count source and offic
   assert.ok(ai200.description.includes('2026年10月7日'))
   assert.ok(ai200.description.includes('Microsoft認定試験全般の目安'))
   assert.ok(ai200.usageReview)
-  assert.ok(ai200.usageReview.notes.split(/\s+/).includes(
-    'https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience'))
+  assert.ok(ai200.usageReview.notes.split(/\s+/).some((token) =>
+    token === 'https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience'))
   for (const text of ['30〜35%', '25〜30%', '不一致']) {
     assert.ok(ai200.description.includes(text), text)
     assert.ok(ai200.usageReview.notes.includes(text), text)
