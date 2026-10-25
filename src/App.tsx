@@ -12,7 +12,7 @@ import { ContentPolicy } from './components/ContentPolicy.tsx'
 
 const requestUrl = 'https://github.com/usagiandkamex/exam-training-app/issues/new?template=exam-request.yml'
 
-function ExamBadge({ exam }: { exam: Exam }) {
+function ExamBadge() {
   return <Badge appearance="tint" color="brand">
     独自作問 · 非公式
   </Badge>
@@ -44,7 +44,7 @@ function Setup({ onStart }: { onStart: (exam: Exam, domains: string[], limit: nu
             {exams.map((item) => <option key={item.id} value={item.id}>{item.title}</option>)}
           </Select>
         </Field>
-        <ExamBadge exam={exam} />
+        <ExamBadge />
         <p className="muted">{exam.description}</p>
         <fieldset>
           <legend>分野指定</legend>
@@ -144,7 +144,7 @@ function Quiz({ exam, session, onAnswer, onNext }: {
   useEffect(() => { if (answer) feedback.current?.focus() }, [answer])
 
   return <div className="quiz-shell">
-    <div className="quiz-topline"><div><p className="eyebrow">{exam.title}</p><ExamBadge exam={exam} /></div>
+    <div className="quiz-topline"><div><p className="eyebrow">{exam.title}</p><ExamBadge /></div>
       <DialogTrigger disableButtonEnhancement><Button appearance="subtle">学習を終了</Button></DialogTrigger>
     </div>
     <Stats session={session} />
@@ -206,7 +206,7 @@ function Results({ exam, session, onRestart, onReset }: {
   useEffect(() => { heading.current?.focus() }, [])
   return <div className="quiz-shell">
     <div className="results-heading">
-      <p className="eyebrow">SESSION COMPLETE</p><ExamBadge exam={exam} />
+      <p className="eyebrow">SESSION COMPLETE</p><ExamBadge />
       <h1 ref={heading} tabIndex={-1}>おつかれさまでした！</h1>
       <p>{exam.title} · {session.questions.length}問の学習が完了しました。</p>
     </div>
