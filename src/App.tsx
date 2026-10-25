@@ -88,7 +88,7 @@ function Setup({ onStart }: { onStart: (exam: Exam, domains: string[], limit: nu
           <Badge appearance="outline">試験はリクエストに応じて追加</Badge>
           <h2>次に学びたい試験は？</h2>
           <p>Azure・AWS・CISSPなど、追加したい試験をGitHubのissueでお知らせください。</p>
-          <p className="muted">DP-300・AI-200・SC-300の非公式問題集を公開しています。</p>
+          <p className="muted">DP-300・AI-200・SC-500・SC-300の非公式問題集を公開しています。</p>
           <Link href={requestUrl} target="_blank" rel="noopener noreferrer">試験の追加をリクエスト（別タブ） →</Link>
         </Card>
         {exam.blueprint && <Card className="guide-card">

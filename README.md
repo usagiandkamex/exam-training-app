@@ -11,7 +11,7 @@ GitHub Pagesで公開する、非公式の選択式クイズアプリです。Re
 - 現在の問題数、回答数、正解数、回答済み問題の正答率、終了時の分野別結果と誤答の復習を表示。
 - スマートフォン・PC向けのレスポンシブUI。キーボード操作、読み上げ通知、動きを減らす設定にも対応。
 
-**DP-300「Microsoft Azure SQL ソリューションの管理」、AI-200「Azure での AI クラウド ソリューションの開発」、SC-300「Microsoft ID およびアクセス管理者」の日本語・非公式問題集を各600問公開しています。** Azure・AWS・CISSPなどの試験は[追加リクエスト](https://github.com/usagiandkamex/exam-training-app/issues/new?template=exam-request.yml)をもとに追加します。
+**DP-300「Microsoft Azure SQL ソリューションの管理」、AI-200「Azure での AI クラウド ソリューションの開発」、SC-500「クラウドおよび AI ワークロードに対するエンドツーエンドのセキュリティ制御の実装」、SC-300「Microsoft ID およびアクセス管理者」の日本語・非公式問題集を各600問公開しています。** Azure・AWS・CISSPなどの試験は[追加リクエスト](https://github.com/usagiandkamex/exam-training-app/issues/new?template=exam-request.yml)をもとに追加します。
 
 DP-300は[公式学習ガイド](https://learn.microsoft.com/ja-jp/credentials/certifications/resources/study-guides/dp-300)で公開されている**2026年10月27日適用版**を対象にしています（確認日：2026-10-25、確認時点では適用予定）。分野と収録数は次のとおりです。
 
@@ -46,6 +46,17 @@ SC-300は[公式学習ガイド](https://learn.microsoft.com/ja-jp/credentials/c
 | ID ガバナンスの計画と自動化 | 20〜25% | 150問 |
 
 認証とアクセス管理は、日英の公式ガイドとも概要25〜30%、詳細見出し20〜25%と不一致があり、解消は未確認です。画面には概要を表示し、収録は両方に収まる25%としています。他の3分野の上限も25%のため、全4分野を各150問（25%）にしています。SC-300固有の問題数は確認できず、[Microsoft認定試験全般の目安40〜60問](https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience)の上限を計画に使用しています（確認日：2026-10-25）。SC-300の固定問題数・上限ではなく、本番の形式・難易度・合否を再現・保証しません。公開技術資料からの独自作問であり、マージ前には人による内容・権利・正確性レビューが必要です。
+
+SC-500は[公式学習ガイド](https://learn.microsoft.com/ja-jp/credentials/certifications/resources/study-guides/sc-500)を対象にしています（確認日：2026-10-25）。認定資格は[クラウドおよび AI セキュリティ エンジニア アソシエイト](https://learn.microsoft.com/ja-jp/credentials/certifications/cloud-and-ai-security-engineer-associate/)です。確認時点の日英ガイドでは4分野と比率が一致しており、本文に改訂日・適用日の明記はありません。
+
+| 分野 | 公式の出題比率 | 収録数 |
+| --- | --- | --- |
+| ID、アクセス、ガバナンスの管理 | 20〜25% | 140問 |
+| セキュリティで保護されたストレージ、データベース、ネットワーク | 25〜30% | 180問 |
+| セキュリティで保護されたコンピューティング | 20〜25% | 140問 |
+| セキュリティ体制の管理と監視 | 20〜25% | 140問 |
+
+SC-500固有の問題数は未確認のため、上記の[Microsoft認定試験全般の目安40〜60問](https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience)の上限を計画に使用し、10倍の600問を用意しています（確認日：2026-10-25）。SC-500の固定問題数・上限、本番試験の日本語提供、形式・難易度・合否を保証するものではありません。[受験者契約](https://learn.microsoft.com/ja-jp/credentials/support/certification-exam-candidate-agreement)、[試験セキュリティポリシー](https://learn.microsoft.com/ja-jp/credentials/support/exam-and-assessment-lab-security-policies)、[Microsoft Learn利用条件](https://learn.microsoft.com/ja-jp/legal/termsofuse)を確認し、公開技術資料から独自作問しています。実際の試験・公式練習問題・ダンプや資料本文の転載・翻訳ではなく、マージ前には人による内容・権利・正確性のレビューが必要です。
 
 回答はメモリ上だけに保持し、再読み込みや終了で消えます。学習履歴の送信・永続保存、広告、アクセス解析はありません。GitHub Pagesによるアクセス情報の取り扱いは[GitHubのプライバシー声明](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement)を参照してください。
 
