@@ -41,6 +41,7 @@ main { padding-bottom: 48px; }
 .eyebrow { color: var(--colorBrandForeground1); font-size: 12px; font-weight: 650; letter-spacing: .07em; }
 .setup-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 28px; align-items: start; }
 .setup-card, .question-card, .result-card, .guide-card { padding: 28px; border-radius: 16px; gap: 20px; box-shadow: var(--shadow4); }
+.setup-card .fui-Select, .setup-card .fui-Select__select { min-width: 0; width: 100%; max-width: 100%; }
 .section-heading { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
 .step-number { font-size: 13px; font-weight: 650; padding: 6px 8px; border-radius: 6px; background: var(--colorBrandBackground2); color: var(--colorBrandForeground1); }
 .muted, .field-help { color: var(--colorNeutralForeground2); }

@@ -2,143 +2,143 @@ import type { Question } from '../../../lib/exam.ts'
 
 const sqlAgentOverview = [{
   title: 'SQL Server Agent overview',
-  url: 'https://learn.microsoft.com/en-us/sql/ssms/agent/sql-server-agent?view=sql-server-ver17',
+  url: 'https://learn.microsoft.com/ja-jp/sql/ssms/agent/sql-server-agent?view=sql-server-ver17',
 }]
 
 const managedInstanceAgent = [{
   title: 'Automate management tasks using SQL Agent jobs in Azure SQL Managed Instance',
-  url: 'https://learn.microsoft.com/en-us/azure/azure-sql/managed-instance/job-automation-managed-instance?view=azuresql-mi',
+  url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/managed-instance/job-automation-managed-instance?view=azuresql-mi',
 }]
 
 const managedInstanceDifferences = [{
   title: 'T-SQL differences between SQL Server and Azure SQL Managed Instance - SQL Server Agent',
-  url: 'https://learn.microsoft.com/en-us/azure/azure-sql/managed-instance/transact-sql-tsql-differences-sql-server#sql-server-agent',
+  url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/managed-instance/transact-sql-tsql-differences-sql-server#sql-server-agent',
 }]
 
 const agentStepFlow = [{
   title: 'Set job step success or failure flow',
-  url: 'https://learn.microsoft.com/en-us/sql/ssms/agent/set-job-step-success-or-failure-flow?view=sql-server-ver17',
+  url: 'https://learn.microsoft.com/ja-jp/sql/ssms/agent/set-job-step-success-or-failure-flow?view=sql-server-ver17',
 }]
 
 const agentOwnership = [{
   title: 'Give others ownership of a job',
-  url: 'https://learn.microsoft.com/en-us/sql/ssms/agent/give-others-ownership-of-a-job?view=sql-server-ver17',
+  url: 'https://learn.microsoft.com/ja-jp/sql/ssms/agent/give-others-ownership-of-a-job?view=sql-server-ver17',
 }]
 
 const agentProxy = [{
   title: 'Create a SQL Server Agent proxy',
-  url: 'https://learn.microsoft.com/en-us/sql/ssms/agent/create-a-sql-server-agent-proxy?view=sql-server-ver17',
+  url: 'https://learn.microsoft.com/ja-jp/sql/ssms/agent/create-a-sql-server-agent-proxy?view=sql-server-ver17',
 }]
 
 const agentTsqlStepSecurity = [
   {
     title: 'sp_add_jobstep (Transact-SQL)',
-    url: 'https://learn.microsoft.com/en-us/sql/relational-databases/system-stored-procedures/sp-add-jobstep-transact-sql?view=sql-server-ver17',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/system-stored-procedures/sp-add-jobstep-transact-sql?view=sql-server-ver17',
   },
   {
     title: 'sp_grant_proxy_to_subsystem (Transact-SQL)',
-    url: 'https://learn.microsoft.com/en-us/sql/relational-databases/system-stored-procedures/sp-grant-proxy-to-subsystem-transact-sql?view=sql-server-ver17',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/system-stored-procedures/sp-grant-proxy-to-subsystem-transact-sql?view=sql-server-ver17',
   },
 ]
 
 const elasticJobsOverview = [{
   title: 'Elastic jobs in Azure SQL Database',
-  url: 'https://learn.microsoft.com/en-us/azure/azure-sql/database/elastic-jobs-overview?view=azuresql',
+  url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/database/elastic-jobs-overview?view=azuresql',
 }]
 
 const elasticJobsTutorial = [{
   title: 'Create, configure, and manage elastic jobs',
-  url: 'https://learn.microsoft.com/en-us/azure/azure-sql/database/elastic-jobs-tutorial?view=azuresql',
+  url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/database/elastic-jobs-tutorial?view=azuresql',
 }]
 
 const elasticJobsTsql = [{
   title: 'Create and manage elastic jobs by using T-SQL',
-  url: 'https://learn.microsoft.com/en-us/azure/azure-sql/database/elastic-jobs-tsql-create-manage?view=azuresql',
+  url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/database/elastic-jobs-tsql-create-manage?view=azuresql',
 }]
 
 const armWhatIf = [{
   title: 'ARM template deployment what-if operation',
-  url: 'https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/deploy-what-if',
+  url: 'https://learn.microsoft.com/ja-jp/azure/azure-resource-manager/templates/deploy-what-if',
 }]
 
 const armDeploymentHistory = [{
   title: 'View deployment history with Azure Resource Manager',
-  url: 'https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/deployment-history',
+  url: 'https://learn.microsoft.com/ja-jp/azure/azure-resource-manager/templates/deployment-history',
 }]
 
 const armDeploymentModes = [{
   title: 'Azure Resource Manager deployment modes',
-  url: 'https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/deployment-modes',
+  url: 'https://learn.microsoft.com/ja-jp/azure/azure-resource-manager/templates/deployment-modes',
 }]
 
 const deploymentStackKnownIssues = [{
   title: 'Deployment stacks known issues',
-  url: 'https://learn.microsoft.com/azure/azure-resource-manager/bicep/deployment-stacks-known-issues',
+  url: 'https://learn.microsoft.com/ja-jp/azure/azure-resource-manager/bicep/deployment-stacks-known-issues',
 }]
 
 const bicepCliDeployment = [{
   title: 'Deploy Bicep files with the Azure CLI',
-  url: 'https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/deploy-cli',
+  url: 'https://learn.microsoft.com/ja-jp/azure/azure-resource-manager/bicep/deploy-cli',
 }]
 
 const bicepPowerShellDeployment = [{
   title: 'Deploy Bicep files with Azure PowerShell',
-  url: 'https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/deploy-powershell',
+  url: 'https://learn.microsoft.com/ja-jp/azure/azure-resource-manager/bicep/deploy-powershell',
 }]
 
 const secureParameters = [{
   title: 'Linter rule - secure parameter default',
-  url: 'https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter-rule-secure-parameter-default',
+  url: 'https://learn.microsoft.com/ja-jp/azure/azure-resource-manager/bicep/linter-rule-secure-parameter-default',
 }]
 
 const armParameterFiles = [{
   title: 'Create Resource Manager parameter file',
-  url: 'https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/parameter-files',
+  url: 'https://learn.microsoft.com/ja-jp/azure/azure-resource-manager/templates/parameter-files',
 }]
 
 const armBestPractices = [{
   title: 'ARM template best practices',
-  url: 'https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/best-practices',
+  url: 'https://learn.microsoft.com/ja-jp/azure/azure-resource-manager/templates/best-practices',
 }]
 
 const automationExecution = [{
   title: 'Runbook execution in Azure Automation',
-  url: 'https://learn.microsoft.com/en-us/azure/automation/automation-runbook-execution',
+  url: 'https://learn.microsoft.com/ja-jp/azure/automation/automation-runbook-execution',
 }]
 
 const automationIdentity = [{
   title: 'Using a system-assigned managed identity for an Azure Automation account',
-  url: 'https://learn.microsoft.com/en-us/azure/automation/enable-managed-identity-for-automation',
+  url: 'https://learn.microsoft.com/ja-jp/azure/automation/enable-managed-identity-for-automation',
 }]
 
 const hybridWorker = [{
   title: 'Automation Hybrid Runbook Worker overview',
-  url: 'https://learn.microsoft.com/en-us/azure/automation/automation-hybrid-runbook-worker',
+  url: 'https://learn.microsoft.com/ja-jp/azure/automation/automation-hybrid-runbook-worker',
 }]
 
 const automationNetwork = [{
   title: 'Azure Automation network configuration details',
-  url: 'https://learn.microsoft.com/en-us/azure/automation/automation-network-configuration',
+  url: 'https://learn.microsoft.com/ja-jp/azure/automation/automation-network-configuration',
 }]
 
 const automationModules = [{
   title: 'Update Azure PowerShell modules in Automation',
-  url: 'https://learn.microsoft.com/en-us/azure/automation/automation-update-azure-modules',
+  url: 'https://learn.microsoft.com/ja-jp/azure/automation/automation-update-azure-modules',
 }]
 
 const automationSchedules = [{
   title: 'Manage schedules in Azure Automation',
-  url: 'https://learn.microsoft.com/en-us/azure/automation/shared-resources/schedules',
+  url: 'https://learn.microsoft.com/ja-jp/azure/automation/shared-resources/schedules',
 }]
 
 const automationAlerts = [{
   title: 'Monitor runbooks with metric alerts',
-  url: 'https://learn.microsoft.com/en-us/azure/automation/automation-alert-metric',
+  url: 'https://learn.microsoft.com/ja-jp/azure/automation/automation-alert-metric',
 }]
 
 const automationTroubleshooting = [{
   title: 'Troubleshoot runbook issues',
-  url: 'https://learn.microsoft.com/en-us/azure/automation/troubleshoot/runbooks',
+  url: 'https://learn.microsoft.com/ja-jp/azure/automation/troubleshoot/runbooks',
 }]
 
 const questions: Question[] = [

@@ -3,171 +3,171 @@ import type { Question } from '../../../lib/exam.ts'
 const refs = {
   acrTasks: [{
     title: 'Automate container image builds and maintenance with Azure Container Registry tasks',
-    url: 'https://learn.microsoft.com/en-us/azure/container-registry/container-registry-tasks-overview',
+    url: 'https://learn.microsoft.com/ja-jp/azure/container-registry/container-registry-tasks-overview',
   }],
   acrSteps: [{
     title: 'Run multi-step build, test, and patch tasks in ACR Tasks',
-    url: 'https://learn.microsoft.com/en-us/azure/container-registry/container-registry-tasks-multi-step',
+    url: 'https://learn.microsoft.com/ja-jp/azure/container-registry/container-registry-tasks-multi-step',
   }],
   acrYaml: [{
     title: 'ACR Tasks reference: YAML',
-    url: 'https://learn.microsoft.com/en-us/azure/container-registry/container-registry-tasks-reference-yaml',
+    url: 'https://learn.microsoft.com/ja-jp/azure/container-registry/container-registry-tasks-reference-yaml',
   }],
   acrSchedule: [{
     title: 'Run an ACR task on a defined schedule',
-    url: 'https://learn.microsoft.com/en-us/azure/container-registry/container-registry-tasks-scheduled',
+    url: 'https://learn.microsoft.com/ja-jp/azure/container-registry/container-registry-tasks-scheduled',
   }],
   acrConcepts: [{
     title: 'About registries, repositories, and artifacts',
-    url: 'https://learn.microsoft.com/en-us/azure/container-registry/container-registry-concepts',
+    url: 'https://learn.microsoft.com/ja-jp/azure/container-registry/container-registry-concepts',
   }],
   acrVersions: [{
     title: 'Recommendations for tagging and versioning container images',
-    url: 'https://learn.microsoft.com/en-us/azure/container-registry/container-registry-image-tag-version',
+    url: 'https://learn.microsoft.com/ja-jp/azure/container-registry/container-registry-image-tag-version',
   }],
   acrDelete: [{
     title: 'Delete container images in Azure Container Registry',
-    url: 'https://learn.microsoft.com/en-us/azure/container-registry/container-registry-delete',
+    url: 'https://learn.microsoft.com/ja-jp/azure/container-registry/container-registry-delete',
   }],
   acrRetention: [{
     title: 'Set a retention policy to retain untagged manifests',
-    url: 'https://learn.microsoft.com/en-us/azure/container-registry/container-registry-retention-policy',
+    url: 'https://learn.microsoft.com/ja-jp/azure/container-registry/container-registry-retention-policy',
   }],
   acrLock: [{
     title: 'Lock a container image in an Azure container registry',
-    url: 'https://learn.microsoft.com/en-us/azure/container-registry/container-registry-image-lock',
+    url: 'https://learn.microsoft.com/ja-jp/azure/container-registry/container-registry-image-lock',
   }],
   acrPurge: [{
     title: 'Automatically purge images from an Azure container registry',
-    url: 'https://learn.microsoft.com/en-us/azure/container-registry/container-registry-auto-purge',
+    url: 'https://learn.microsoft.com/ja-jp/azure/container-registry/container-registry-auto-purge',
   }],
   acrImport: [{
     title: 'Import container images to a container registry',
-    url: 'https://learn.microsoft.com/en-us/azure/container-registry/container-registry-import-images',
+    url: 'https://learn.microsoft.com/ja-jp/azure/container-registry/container-registry-import-images',
   }],
   appContainer: [{
     title: 'Configure a custom container for Azure App Service',
-    url: 'https://learn.microsoft.com/en-us/azure/app-service/configure-custom-container',
+    url: 'https://learn.microsoft.com/ja-jp/azure/app-service/configure-custom-container',
   }],
   appLinuxFaq: [{
     title: 'Frequently asked questions - Azure App Service on Linux',
-    url: 'https://learn.microsoft.com/en-us/azure/app-service/faq-app-service-linux',
+    url: 'https://learn.microsoft.com/ja-jp/azure/app-service/faq-app-service-linux',
   }],
   appSettings: [{
     title: 'Configure an App Service app',
-    url: 'https://learn.microsoft.com/en-us/azure/app-service/configure-common',
+    url: 'https://learn.microsoft.com/ja-jp/azure/app-service/configure-common',
   }],
   appVault: [{
     title: 'Use Key Vault references as app settings in Azure App Service',
-    url: 'https://learn.microsoft.com/en-us/azure/app-service/app-service-key-vault-references',
+    url: 'https://learn.microsoft.com/ja-jp/azure/app-service/app-service-key-vault-references',
   }],
   acaEnvironment: [{
     title: 'Azure Container Apps environments',
-    url: 'https://learn.microsoft.com/en-us/azure/container-apps/environment',
+    url: 'https://learn.microsoft.com/ja-jp/azure/container-apps/environment',
   }],
   acaContainers: [{
     title: 'Containers in Azure Container Apps',
-    url: 'https://learn.microsoft.com/en-us/azure/container-apps/containers',
+    url: 'https://learn.microsoft.com/ja-jp/azure/container-apps/containers',
   }],
   acaRevisions: [{
     title: 'Update and deploy changes in Azure Container Apps',
-    url: 'https://learn.microsoft.com/en-us/azure/container-apps/revisions',
+    url: 'https://learn.microsoft.com/ja-jp/azure/container-apps/revisions',
   }],
   acaTraffic: [{
     title: 'Traffic splitting in Azure Container Apps',
-    url: 'https://learn.microsoft.com/en-us/azure/container-apps/traffic-splitting',
+    url: 'https://learn.microsoft.com/ja-jp/azure/container-apps/traffic-splitting',
   }],
   acaIngress: [{
     title: 'Ingress in Azure Container Apps',
-    url: 'https://learn.microsoft.com/en-us/azure/container-apps/ingress-overview',
+    url: 'https://learn.microsoft.com/ja-jp/azure/container-apps/ingress-overview',
   }],
   acaScale: [{
     title: 'Set scaling rules in Azure Container Apps',
-    url: 'https://learn.microsoft.com/en-us/azure/container-apps/scale-app',
+    url: 'https://learn.microsoft.com/ja-jp/azure/container-apps/scale-app',
   }],
   acaSecrets: [{
     title: 'Manage secrets in Azure Container Apps',
-    url: 'https://learn.microsoft.com/en-us/azure/container-apps/manage-secrets',
+    url: 'https://learn.microsoft.com/ja-jp/azure/container-apps/manage-secrets',
   }],
   acaVariables: [{
     title: 'Manage environment variables on Azure Container Apps',
-    url: 'https://learn.microsoft.com/en-us/azure/container-apps/environment-variables',
+    url: 'https://learn.microsoft.com/ja-jp/azure/container-apps/environment-variables',
   }],
   acaProbes: [{
     title: 'Health probes in Azure Container Apps',
-    url: 'https://learn.microsoft.com/en-us/azure/container-apps/health-probes',
+    url: 'https://learn.microsoft.com/ja-jp/azure/container-apps/health-probes',
   }],
   acaLogs: [{
     title: 'View log streams in Azure Container Apps',
-    url: 'https://learn.microsoft.com/en-us/azure/container-apps/log-streaming',
+    url: 'https://learn.microsoft.com/ja-jp/azure/container-apps/log-streaming',
   }],
   acaSystemLogs: [{
     title: 'Monitor logs in Azure Container Apps',
-    url: 'https://learn.microsoft.com/en-us/azure/container-apps/log-monitoring',
+    url: 'https://learn.microsoft.com/ja-jp/azure/container-apps/log-monitoring',
   }],
   acaConsole: [{
     title: 'Connect to a container console in Azure Container Apps',
-    url: 'https://learn.microsoft.com/en-us/azure/container-apps/container-console',
+    url: 'https://learn.microsoft.com/ja-jp/azure/container-apps/container-console',
   }],
   aksDeploy: [{
     title: 'Deploy an application to Azure Kubernetes Service',
-    url: 'https://learn.microsoft.com/en-us/azure/aks/tutorial-kubernetes-deploy-application',
+    url: 'https://learn.microsoft.com/ja-jp/azure/aks/tutorial-kubernetes-deploy-application',
   }],
   aksConcepts: [{
     title: 'Core concepts for Azure Kubernetes Service',
-    url: 'https://learn.microsoft.com/en-us/azure/aks/concepts-clusters-workloads',
+    url: 'https://learn.microsoft.com/ja-jp/azure/aks/concepts-clusters-workloads',
   }],
   aksReliability: [{
     title: 'Deployment and cluster reliability best practices for Azure Kubernetes Service',
-    url: 'https://learn.microsoft.com/en-us/azure/aks/best-practices-app-cluster-reliability',
+    url: 'https://learn.microsoft.com/ja-jp/azure/aks/best-practices-app-cluster-reliability',
   }],
   aksStorage: [{
     title: 'Storage options for applications in Azure Kubernetes Service',
-    url: 'https://learn.microsoft.com/en-us/azure/aks/concepts-storage',
+    url: 'https://learn.microsoft.com/ja-jp/azure/aks/concepts-storage',
   }],
   aksServices: [{
     title: 'Kubernetes Services in AKS',
-    url: 'https://learn.microsoft.com/en-us/azure/aks/concepts-network-services',
+    url: 'https://learn.microsoft.com/ja-jp/azure/aks/concepts-network-services',
   }],
   aksIngress: [{
     title: 'Ingress in Azure Kubernetes Service',
-    url: 'https://learn.microsoft.com/en-us/azure/aks/concepts-network-ingress',
+    url: 'https://learn.microsoft.com/ja-jp/azure/aks/concepts-network-ingress',
   }],
   aksResources: [{
     title: 'Best practices for application developers to manage resources in Azure Kubernetes Service',
-    url: 'https://learn.microsoft.com/en-us/azure/aks/developer-best-practices-resource-management',
+    url: 'https://learn.microsoft.com/ja-jp/azure/aks/developer-best-practices-resource-management',
   }],
   aksConnectivity: [{
     title: 'Troubleshoot app connection issues in an AKS cluster',
-    url: 'https://learn.microsoft.com/en-us/troubleshoot/azure/azure-kubernetes/connectivity/connection-issues-application-hosted-aks-cluster',
+    url: 'https://learn.microsoft.com/ja-jp/troubleshoot/azure/azure-kubernetes/connectivity/connection-issues-application-hosted-aks-cluster',
   }],
   aksRollout: [{
     title: 'Zero-downtime migration to Azure Kubernetes Service',
-    url: 'https://learn.microsoft.com/en-us/azure/aks/zero-downtime-migration',
+    url: 'https://learn.microsoft.com/ja-jp/azure/aks/zero-downtime-migration',
   }],
   aksInternalLb: [{
     title: 'Use an internal load balancer with Azure Kubernetes Service',
-    url: 'https://learn.microsoft.com/en-us/azure/aks/internal-lb',
+    url: 'https://learn.microsoft.com/ja-jp/azure/aks/internal-lb',
   }],
   aksPods: [{
     title: 'List pods in an Azure Kubernetes Service cluster',
-    url: 'https://learn.microsoft.com/en-us/azure/aks/list-pods-aks-cluster',
+    url: 'https://learn.microsoft.com/ja-jp/azure/aks/list-pods-aks-cluster',
   }],
   aksCrash: [{
     title: 'Pod is stuck in CrashLoopBackOff mode',
-    url: 'https://learn.microsoft.com/en-us/troubleshoot/azure/azure-kubernetes/create-upgrade-delete/pod-stuck-crashloopbackoff-mode',
+    url: 'https://learn.microsoft.com/ja-jp/troubleshoot/azure/azure-kubernetes/create-upgrade-delete/pod-stuck-crashloopbackoff-mode',
   }],
   aksScheduler: [{
     title: 'Troubleshoot pod scheduler errors in Azure Kubernetes Service',
-    url: 'https://learn.microsoft.com/en-us/troubleshoot/azure/azure-kubernetes/availability-performance/troubleshoot-pod-scheduler-errors',
+    url: 'https://learn.microsoft.com/ja-jp/troubleshoot/azure/azure-kubernetes/availability-performance/troubleshoot-pod-scheduler-errors',
   }],
   aksAcr: [{
     title: 'Authenticate with Azure Container Registry from Azure Kubernetes Service',
-    url: 'https://learn.microsoft.com/en-us/azure/aks/cluster-container-registry-integration',
+    url: 'https://learn.microsoft.com/ja-jp/azure/aks/cluster-container-registry-integration',
   }],
   aksPolicies: [{
     title: 'Secure traffic between pods with network policies in Azure Kubernetes Service',
-    url: 'https://learn.microsoft.com/en-us/azure/aks/use-network-policies',
+    url: 'https://learn.microsoft.com/ja-jp/azure/aks/use-network-policies',
   }],
 }
 

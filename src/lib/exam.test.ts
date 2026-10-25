@@ -39,6 +39,20 @@ test('every published bank and the demo pass content validation', () => {
   assert.equal(demo.blueprint, null)
 })
 
+test('Japanese question banks explicitly request Japanese Microsoft Learn reference pages', () => {
+  for (const id of ['demo', 'dp-300', 'ai-200']) {
+    const exam = exams.find((item) => item.id === id)!
+    for (const question of exam.questions) {
+      for (const ref of question.references) {
+        const url = new URL(ref.url)
+        if (url.hostname === 'learn.microsoft.com') {
+          assert.ok(url.pathname.startsWith('/ja-jp/'), `${question.id}: ${ref.url}`)
+        }
+      }
+    }
+  }
+})
+
 test('catalog rejects an empty list and duplicate exam IDs', () => {
   assert.ok(validateCatalog([]).length > 0)
   assert.ok(validateCatalog([demo, demo]).some((error) => error.includes('試験ID')))

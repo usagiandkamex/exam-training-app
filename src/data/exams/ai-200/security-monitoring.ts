@@ -3,247 +3,247 @@ import type { Question } from '../../../lib/exam.ts'
 const refs = {
   secrets: {
     title: 'About Azure Key Vault secrets',
-    url: 'https://learn.microsoft.com/en-us/azure/key-vault/secrets/about-secrets',
+    url: 'https://learn.microsoft.com/ja-jp/azure/key-vault/secrets/about-secrets',
   },
   secretPractices: {
     title: 'Secure your Azure Key Vault secrets',
-    url: 'https://learn.microsoft.com/en-us/azure/key-vault/secrets/secrets-best-practices',
+    url: 'https://learn.microsoft.com/ja-jp/azure/key-vault/secrets/secrets-best-practices',
   },
   vaultAuth: {
     title: 'Authentication in Azure Key Vault',
-    url: 'https://learn.microsoft.com/en-us/azure/key-vault/general/authentication',
+    url: 'https://learn.microsoft.com/ja-jp/azure/key-vault/general/authentication',
   },
   vaultRbac: {
     title: 'Provide access to Key Vault with Azure role-based access control',
-    url: 'https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide',
+    url: 'https://learn.microsoft.com/ja-jp/azure/key-vault/general/rbac-guide',
   },
   identity: {
     title: 'Managed identities for Azure resources',
-    url: 'https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview',
+    url: 'https://learn.microsoft.com/ja-jp/entra/identity/managed-identities-azure-resources/overview',
   },
   objects: {
     title: 'Azure Key Vault keys, secrets, and certificates overview',
-    url: 'https://learn.microsoft.com/en-us/azure/key-vault/general/about-keys-secrets-certificates',
+    url: 'https://learn.microsoft.com/ja-jp/azure/key-vault/general/about-keys-secrets-certificates',
   },
   getSecret: {
     title: 'Get Secret',
-    url: 'https://learn.microsoft.com/en-us/rest/api/keyvault/secrets/get-secret/get-secret?view=rest-keyvault-secrets-7.4',
+    url: 'https://learn.microsoft.com/ja-jp/rest/api/keyvault/secrets/get-secret/get-secret?view=rest-keyvault-secrets-7.4',
   },
   setSecret: {
     title: 'Set Secret',
-    url: 'https://learn.microsoft.com/en-us/rest/api/keyvault/secrets/set-secret/set-secret?view=rest-keyvault-secrets-7.4',
+    url: 'https://learn.microsoft.com/ja-jp/rest/api/keyvault/secrets/set-secret/set-secret?view=rest-keyvault-secrets-7.4',
   },
   deleteSecret: {
     title: 'Delete Secret',
-    url: 'https://learn.microsoft.com/en-us/rest/api/keyvault/secrets/delete-secret/delete-secret',
+    url: 'https://learn.microsoft.com/ja-jp/rest/api/keyvault/secrets/delete-secret/delete-secret',
   },
   rotation: {
     title: 'Automate secret rotation for resources with one set of credentials',
-    url: 'https://learn.microsoft.com/en-us/azure/key-vault/secrets/tutorial-rotation',
+    url: 'https://learn.microsoft.com/ja-jp/azure/key-vault/secrets/tutorial-rotation',
   },
   dualRotation: {
     title: 'Automate secret rotation for resources with two sets of credentials',
-    url: 'https://learn.microsoft.com/en-us/azure/key-vault/secrets/tutorial-rotation-dual',
+    url: 'https://learn.microsoft.com/ja-jp/azure/key-vault/secrets/tutorial-rotation-dual',
   },
   throttling: {
     title: 'Azure Key Vault throttling guidance',
-    url: 'https://learn.microsoft.com/en-us/azure/key-vault/general/overview-throttling',
+    url: 'https://learn.microsoft.com/ja-jp/azure/key-vault/general/overview-throttling',
   },
   privateLink: {
     title: 'Integrate Key Vault with Azure Private Link',
-    url: 'https://learn.microsoft.com/en-us/azure/key-vault/general/private-link-service',
+    url: 'https://learn.microsoft.com/ja-jp/azure/key-vault/general/private-link-service',
   },
   softDelete: {
     title: 'Azure Key Vault soft-delete overview',
-    url: 'https://learn.microsoft.com/en-us/azure/key-vault/general/soft-delete-overview',
+    url: 'https://learn.microsoft.com/ja-jp/azure/key-vault/general/soft-delete-overview',
   },
   keyValues: {
     title: 'Azure App Configuration keys and values',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-app-configuration/concept-key-value',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-app-configuration/concept-key-value',
   },
   keyValueRest: {
     title: 'Azure App Configuration REST API key-values',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-app-configuration/rest-api-key-value',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-app-configuration/rest-api-key-value',
   },
   configProvider: {
     title: 'Azure App Configuration .NET configuration provider',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-app-configuration/reference-dotnet-provider',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-app-configuration/reference-dotnet-provider',
   },
   configPython: {
     title: 'Azure App Configuration Python Provider client library',
-    url: 'https://learn.microsoft.com/en-us/python/api/overview/azure/appconfiguration-provider-readme?view=azure-python',
+    url: 'https://learn.microsoft.com/ja-jp/python/api/overview/azure/appconfiguration-provider-readme?view=azure-python',
   },
   configPythonRefresh: {
     title: 'Use dynamic configuration in Python',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-app-configuration/enable-dynamic-configuration-python',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-app-configuration/enable-dynamic-configuration-python',
   },
   pythonSelector: {
     title: 'SettingSelector class',
-    url: 'https://learn.microsoft.com/en-us/python/api/azure-appconfiguration-provider/azure.appconfiguration.provider.settingselector?view=azure-python',
+    url: 'https://learn.microsoft.com/ja-jp/python/api/azure-appconfiguration-provider/azure.appconfiguration.provider.settingselector?view=azure-python',
   },
   pythonVaultOptions: {
     title: 'AzureAppConfigurationKeyVaultOptions class for Python',
-    url: 'https://learn.microsoft.com/en-us/python/api/azure-appconfiguration-provider/azure.appconfiguration.provider.azureappconfigurationkeyvaultoptions?view=azure-python',
+    url: 'https://learn.microsoft.com/ja-jp/python/api/azure-appconfiguration-provider/azure.appconfiguration.provider.azureappconfigurationkeyvaultoptions?view=azure-python',
   },
   featureFlagOptions: {
     title: 'FeatureFlagOptions class',
-    url: 'https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.azureappconfiguration.featuremanagement.featureflagoptions',
+    url: 'https://learn.microsoft.com/ja-jp/dotnet/api/microsoft.extensions.configuration.azureappconfiguration.featuremanagement.featureflagoptions',
   },
   secretRefresh: {
     title: 'AzureAppConfigurationKeyVaultOptions.SetSecretRefreshInterval method',
-    url: 'https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.azureappconfiguration.azureappconfigurationkeyvaultoptions.setsecretrefreshinterval',
+    url: 'https://learn.microsoft.com/ja-jp/dotnet/api/microsoft.extensions.configuration.azureappconfiguration.azureappconfigurationkeyvaultoptions.setsecretrefreshinterval',
   },
   configRefresh: {
     title: 'Use dynamic configuration in an ASP.NET Core app',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-app-configuration/enable-dynamic-configuration-aspnet-core',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-app-configuration/enable-dynamic-configuration-aspnet-core',
   },
   configVault: {
     title: 'Use Key Vault references in an ASP.NET Core app',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-app-configuration/use-key-vault-references-dotnet-core',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-app-configuration/use-key-vault-references-dotnet-core',
   },
   configRbac: {
     title: 'Access Azure App Configuration using Microsoft Entra ID',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-app-configuration/concept-enable-rbac',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-app-configuration/concept-enable-rbac',
   },
   snapshots: {
     title: 'Azure App Configuration snapshots',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-app-configuration/concept-snapshots',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-app-configuration/concept-snapshots',
   },
   features: {
     title: 'Feature management overview',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-app-configuration/concept-feature-management',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-app-configuration/concept-feature-management',
   },
   targeting: {
     title: 'Roll out features to targeted audiences',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-app-configuration/howto-targetingfilter',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-app-configuration/howto-targetingfilter',
   },
   timeWindow: {
     title: 'Enable features on a schedule',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-app-configuration/howto-timewindow-filter',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-app-configuration/howto-timewindow-filter',
   },
   otel: {
     title: '.NET observability with OpenTelemetry',
-    url: 'https://learn.microsoft.com/en-us/dotnet/core/diagnostics/observability-with-otel',
+    url: 'https://learn.microsoft.com/ja-jp/dotnet/core/diagnostics/observability-with-otel',
   },
   otelPython: {
     title: 'Azure Monitor OpenTelemetry Distro client library for Python',
-    url: 'https://learn.microsoft.com/en-us/python/api/overview/azure/monitor-opentelemetry-readme?view=azure-python',
+    url: 'https://learn.microsoft.com/ja-jp/python/api/overview/azure/monitor-opentelemetry-readme?view=azure-python',
   },
   otelPythonConfig: {
     title: 'Azure Monitor OpenTelemetry package for Python',
-    url: 'https://learn.microsoft.com/en-us/python/api/azure-monitor-opentelemetry/azure.monitor.opentelemetry?view=azure-python',
+    url: 'https://learn.microsoft.com/ja-jp/python/api/azure-monitor-opentelemetry/azure.monitor.opentelemetry?view=azure-python',
   },
   pythonTracing: {
     title: 'Azure Core Tracing OpenTelemetry client library for Python',
-    url: 'https://learn.microsoft.com/en-us/python/api/overview/azure/core-tracing-opentelemetry-readme?view=azure-python-preview',
+    url: 'https://learn.microsoft.com/ja-jp/python/api/overview/azure/core-tracing-opentelemetry-readme?view=azure-python-preview',
   },
   metricInstrumentation: {
     title: 'Creating .NET metrics',
-    url: 'https://learn.microsoft.com/en-us/dotnet/core/diagnostics/metrics-instrumentation',
+    url: 'https://learn.microsoft.com/ja-jp/dotnet/core/diagnostics/metrics-instrumentation',
   },
   traceCollection: {
     title: 'Collect a distributed trace',
-    url: 'https://learn.microsoft.com/en-us/dotnet/core/diagnostics/distributed-tracing-collection-walkthroughs',
+    url: 'https://learn.microsoft.com/ja-jp/dotnet/core/diagnostics/distributed-tracing-collection-walkthroughs',
   },
   connectionStrings: {
     title: 'Connection strings in Application Insights',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-monitor/app/connection-strings',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-monitor/app/connection-strings',
   },
   tracing: {
     title: '.NET distributed tracing concepts',
-    url: 'https://learn.microsoft.com/en-us/dotnet/core/diagnostics/distributed-tracing-concepts',
+    url: 'https://learn.microsoft.com/ja-jp/dotnet/core/diagnostics/distributed-tracing-concepts',
   },
   instrumentation: {
     title: 'Adding distributed tracing instrumentation',
-    url: 'https://learn.microsoft.com/en-us/dotnet/core/diagnostics/distributed-tracing-instrumentation-walkthroughs',
+    url: 'https://learn.microsoft.com/ja-jp/dotnet/core/diagnostics/distributed-tracing-instrumentation-walkthroughs',
   },
   activityData: {
     title: 'Activity.IsAllDataRequested property',
-    url: 'https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.activity.isalldatarequested',
+    url: 'https://learn.microsoft.com/ja-jp/dotnet/api/system.diagnostics.activity.isalldatarequested',
   },
   otelModify: {
     title: 'Add and modify OpenTelemetry telemetry',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-add-modify',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-monitor/app/opentelemetry-add-modify',
   },
   sampling: {
     title: 'Sampling in Application Insights with OpenTelemetry',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-sampling',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-monitor/app/opentelemetry-sampling',
   },
   traceBasedLogs: {
     title: 'AzureMonitorOptions.EnableTraceBasedLogsSampler property',
-    url: 'https://learn.microsoft.com/en-us/dotnet/api/azure.monitor.opentelemetry.aspnetcore.azuremonitoroptions.enabletracebasedlogssampler',
+    url: 'https://learn.microsoft.com/ja-jp/dotnet/api/azure.monitor.opentelemetry.aspnetcore.azuremonitoroptions.enabletracebasedlogssampler',
   },
   appInsights: {
     title: 'Introduction to Application Insights',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-overview',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-monitor/app/opentelemetry-overview',
   },
   where: {
     title: 'KQL where operator',
-    url: 'https://learn.microsoft.com/en-us/kusto/query/where-operator?view=microsoft-fabric',
+    url: 'https://learn.microsoft.com/ja-jp/kusto/query/where-operator?view=microsoft-fabric',
   },
   project: {
     title: 'KQL project operator',
-    url: 'https://learn.microsoft.com/en-us/kusto/query/project-operator?view=microsoft-fabric',
+    url: 'https://learn.microsoft.com/ja-jp/kusto/query/project-operator?view=microsoft-fabric',
   },
   summarize: {
     title: 'KQL summarize operator',
-    url: 'https://learn.microsoft.com/en-us/kusto/query/summarize-operator?view=microsoft-fabric',
+    url: 'https://learn.microsoft.com/ja-jp/kusto/query/summarize-operator?view=microsoft-fabric',
   },
   bin: {
     title: 'KQL bin function',
-    url: 'https://learn.microsoft.com/en-us/kusto/query/bin-function?view=microsoft-fabric',
+    url: 'https://learn.microsoft.com/ja-jp/kusto/query/bin-function?view=microsoft-fabric',
   },
   join: {
     title: 'KQL join operator',
-    url: 'https://learn.microsoft.com/en-us/kusto/query/join-operator?view=microsoft-fabric',
+    url: 'https://learn.microsoft.com/ja-jp/kusto/query/join-operator?view=microsoft-fabric',
   },
   percentiles: {
     title: 'KQL percentile and percentiles aggregation functions',
-    url: 'https://learn.microsoft.com/en-us/kusto/query/percentiles-aggregation-function?view=microsoft-fabric',
+    url: 'https://learn.microsoft.com/ja-jp/kusto/query/percentiles-aggregation-function?view=microsoft-fabric',
   },
   countif: {
     title: 'KQL countif aggregation function',
-    url: 'https://learn.microsoft.com/en-us/kusto/query/countif-aggregation-function?view=microsoft-fabric',
+    url: 'https://learn.microsoft.com/ja-jp/kusto/query/countif-aggregation-function?view=microsoft-fabric',
   },
   dcount: {
     title: 'KQL dcount aggregation function',
-    url: 'https://learn.microsoft.com/en-us/kusto/query/dcount-aggregation-function?view=microsoft-fabric',
+    url: 'https://learn.microsoft.com/ja-jp/kusto/query/dcount-aggregation-function?view=microsoft-fabric',
   },
   argMax: {
     title: 'KQL arg_max aggregation function',
-    url: 'https://learn.microsoft.com/en-us/kusto/query/arg-max-aggregation-function?view=microsoft-fabric',
+    url: 'https://learn.microsoft.com/ja-jp/kusto/query/arg-max-aggregation-function?view=microsoft-fabric',
   },
   extend: {
     title: 'KQL extend operator',
-    url: 'https://learn.microsoft.com/en-us/kusto/query/extend-operator?view=microsoft-fabric',
+    url: 'https://learn.microsoft.com/ja-jp/kusto/query/extend-operator?view=microsoft-fabric',
   },
   parseJson: {
     title: 'KQL parse_json function',
-    url: 'https://learn.microsoft.com/en-us/kusto/query/parse-json-function?view=microsoft-fabric',
+    url: 'https://learn.microsoft.com/ja-jp/kusto/query/parse-json-function?view=microsoft-fabric',
   },
   union: {
     title: 'KQL union operator',
-    url: 'https://learn.microsoft.com/en-us/kusto/query/union-operator?view=microsoft-fabric',
+    url: 'https://learn.microsoft.com/ja-jp/kusto/query/union-operator?view=microsoft-fabric',
   },
   top: {
     title: 'KQL top operator',
-    url: 'https://learn.microsoft.com/en-us/kusto/query/top-operator?view=microsoft-fabric',
+    url: 'https://learn.microsoft.com/ja-jp/kusto/query/top-operator?view=microsoft-fabric',
   },
   kqlPractices: {
     title: 'Best practices for Kusto Query Language queries',
-    url: 'https://learn.microsoft.com/en-us/kusto/query/best-practices?view=microsoft-fabric',
+    url: 'https://learn.microsoft.com/ja-jp/kusto/query/best-practices?view=microsoft-fabric',
   },
   requests: {
     title: 'Azure Monitor Logs AppRequests table',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/apprequests',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-monitor/reference/tables/apprequests',
   },
   dependencies: {
     title: 'Azure Monitor Logs AppDependencies table',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/appdependencies',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-monitor/reference/tables/appdependencies',
   },
   metrics: {
     title: 'Azure Monitor Logs AzureMetrics table',
-    url: 'https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/azuremetrics',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-monitor/reference/tables/azuremetrics',
   },
 } as const
 

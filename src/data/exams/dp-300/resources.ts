@@ -3,123 +3,123 @@ import type { Question } from '../../../lib/exam.ts'
 const refs = {
   platform: [{
     title: 'What is Azure SQL?',
-    url: 'https://learn.microsoft.com/azure/azure-sql/azure-sql-iaas-vs-paas-what-is-overview',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/azure-sql-iaas-vs-paas-what-is-overview',
   }],
   infrastructureAsCode: [{
     title: 'Quickstart: Create a single database in Azure SQL Database using an ARM template',
-    url: 'https://learn.microsoft.com/azure/azure-sql/database/single-database-create-arm-template-quickstart',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/database/single-database-create-arm-template-quickstart',
   }],
   azurePolicy: [{
     title: 'What is Azure Policy?',
-    url: 'https://learn.microsoft.com/azure/governance/policy/overview',
+    url: 'https://learn.microsoft.com/ja-jp/azure/governance/policy/overview',
   }],
   managedInstanceProvisioning: [{
     title: 'Quickstart: Create Azure SQL Managed Instance',
-    url: 'https://learn.microsoft.com/azure/azure-sql/managed-instance/instance-create-quickstart',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/managed-instance/instance-create-quickstart',
   }],
   arcOverview: [{
     title: 'What is SQL Server enabled by Azure Arc?',
-    url: 'https://learn.microsoft.com/sql/sql-server/azure-arc/overview',
+    url: 'https://learn.microsoft.com/ja-jp/sql/sql-server/azure-arc/overview',
   }],
   arcAssessment: [{
     title: 'Configure best practices assessment for SQL Server enabled by Azure Arc',
-    url: 'https://learn.microsoft.com/sql/sql-server/azure-arc/assess',
+    url: 'https://learn.microsoft.com/ja-jp/sql/sql-server/azure-arc/assess',
   }],
   updateManager: [{
     title: 'Azure Update Manager for SQL Server on Azure VMs',
-    url: 'https://learn.microsoft.com/azure/azure-sql/virtual-machines/azure-update-manager-sql-vm',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/virtual-machines/azure-update-manager-sql-vm',
   }],
   fabricMirroring: [{
     title: 'Mirroring Azure SQL Database',
-    url: 'https://learn.microsoft.com/fabric/database/mirrored-database/azure-sql-database',
+    url: 'https://learn.microsoft.com/ja-jp/fabric/database/mirrored-database/azure-sql-database',
   }],
   fabricLimitations: [{
     title: 'Limitations in Microsoft Fabric mirrored databases from Azure SQL Database',
-    url: 'https://learn.microsoft.com/fabric/database/mirrored-database/azure-sql-database-limitations',
+    url: 'https://learn.microsoft.com/ja-jp/fabric/database/mirrored-database/azure-sql-database-limitations',
   }],
   partitioning: [{
     title: 'Partitioned tables and indexes',
-    url: 'https://learn.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/partitions/partitioned-tables-and-indexes',
   }],
   sharding: [{
     title: 'Scale out with Azure SQL Database',
-    url: 'https://learn.microsoft.com/azure/azure-sql/database/elastic-scale-introduction',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/database/elastic-scale-introduction',
   }],
   compression: [{
     title: 'Data compression',
-    url: 'https://learn.microsoft.com/sql/relational-databases/data-compression/data-compression',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/data-compression/data-compression',
   }],
   compressionEstimate: [{
     title: 'sys.sp_estimate_data_compression_savings (Transact-SQL)',
-    url: 'https://learn.microsoft.com/sql/relational-databases/system-stored-procedures/sp-estimate-data-compression-savings-transact-sql',
+    url: 'https://learn.microsoft.com/ja-jp/sql/relational-databases/system-stored-procedures/sp-estimate-data-compression-savings-transact-sql',
   }],
   purchasingModels: [{
     title: 'Compare vCore and DTU-based purchasing models of Azure SQL Database',
-    url: 'https://learn.microsoft.com/azure/azure-sql/database/purchasing-models',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/database/purchasing-models',
   }],
   serviceTiers: [{
     title: 'vCore purchasing model - Azure SQL Database',
-    url: 'https://learn.microsoft.com/azure/azure-sql/database/service-tiers-general-purpose-business-critical',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/database/service-tiers-general-purpose-business-critical',
   }],
   serverless: [{
     title: 'Serverless compute tier for Azure SQL Database',
-    url: 'https://learn.microsoft.com/azure/azure-sql/database/serverless-tier-overview',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/database/serverless-tier-overview',
   }],
   hyperscale: [{
     title: 'Hyperscale service tier',
-    url: 'https://learn.microsoft.com/azure/azure-sql/database/service-tier-hyperscale',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/database/service-tier-hyperscale',
   }],
   elasticPools: [{
     title: 'Elastic pools help you manage and scale multiple databases in Azure SQL Database',
-    url: 'https://learn.microsoft.com/azure/azure-sql/database/elastic-pool-overview',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/database/elastic-pool-overview',
   }],
   sqlVmChecklist: [{
     title: 'Checklist: Best practices for SQL Server on Azure VMs',
-    url: 'https://learn.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices-checklist',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices-checklist',
   }],
   sqlVmStorage: [{
     title: 'Storage: Performance best practices for SQL Server on Azure VMs',
-    url: 'https://learn.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices-storage',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices-storage',
   }],
   migrationAssessment: [{
     title: 'Assess migration readiness - SQL Server enabled by Azure Arc',
-    url: 'https://learn.microsoft.com/sql/sql-server/azure-arc/migration-assessment',
+    url: 'https://learn.microsoft.com/ja-jp/sql/sql-server/azure-arc/migration-assessment',
   }],
   dms: [{
     title: 'What is Azure Database Migration Service?',
-    url: 'https://learn.microsoft.com/azure/dms/dms-overview',
+    url: 'https://learn.microsoft.com/ja-jp/azure/dms/dms-overview',
   }],
   dmsOnline: [{
     title: 'Tutorial: Migrate SQL Server to SQL Server on an Azure Virtual Machine with Azure DMS (online)',
-    url: 'https://learn.microsoft.com/data-migration/sql-server/virtual-machines/database-migration-service-online',
+    url: 'https://learn.microsoft.com/ja-jp/data-migration/sql-server/virtual-machines/database-migration-service-online',
   }],
   managedInstanceMigration: [{
     title: 'Migration overview: SQL Server to Azure SQL Managed Instance',
-    url: 'https://learn.microsoft.com/data-migration/sql-server/managed-instance/overview',
+    url: 'https://learn.microsoft.com/ja-jp/data-migration/sql-server/managed-instance/overview',
   }],
   managedInstanceLink: [{
     title: 'Overview of the Managed Instance link',
-    url: 'https://learn.microsoft.com/azure/azure-sql/managed-instance/managed-instance-link-feature-overview',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/managed-instance/managed-instance-link-feature-overview',
   }],
   bacpac: [{
     title: 'Export to a BACPAC file - Azure SQL Database and Azure SQL Managed Instance',
-    url: 'https://learn.microsoft.com/azure/azure-sql/database/database-export',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/database/database-export',
   }],
   nativeRestore: [{
     title: 'Quickstart: Restore a database to Azure SQL Managed Instance with SSMS',
-    url: 'https://learn.microsoft.com/azure/azure-sql/managed-instance/restore-sample-database-quickstart',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/managed-instance/restore-sample-database-quickstart',
   }],
   managedInstanceMove: [{
     title: 'Copy or move a database - Azure SQL Managed Instance',
-    url: 'https://learn.microsoft.com/azure/azure-sql/managed-instance/database-copy-move-how-to',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/managed-instance/database-copy-move-how-to',
   }],
   migrationConnectivity: [{
     title: 'Connectivity architecture for Azure SQL Managed Instance',
-    url: 'https://learn.microsoft.com/azure/azure-sql/managed-instance/connectivity-architecture-overview',
+    url: 'https://learn.microsoft.com/ja-jp/azure/azure-sql/managed-instance/connectivity-architecture-overview',
   }],
   migrationTroubleshooting: [{
     title: 'Troubleshoot common Azure Database Migration Service (classic) issues and errors',
-    url: 'https://learn.microsoft.com/azure/dms/known-issues-troubleshooting-dms',
+    url: 'https://learn.microsoft.com/ja-jp/azure/dms/known-issues-troubleshooting-dms',
   }],
 }
 
