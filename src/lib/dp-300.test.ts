@@ -5,9 +5,8 @@ import dp300 from '../data/exams/dp-300.ts'
 import { validateExam } from './exam.ts'
 import { createSession, getStats, isCorrect, nextQuestion, submitAnswer } from './quiz.ts'
 
-test('DP-300 is registered as an original certification bank without replacing the demo', () => {
+test('DP-300 is registered as an original certification bank', () => {
   assert.ok(exams.includes(dp300))
-  assert.ok(exams.some((exam) => exam.id === 'demo' && exam.kind === 'demo'))
   assert.equal(dp300.id, 'dp-300')
   assert.equal(dp300.kind, 'certification')
   assert.equal(dp300.authorship, 'original')

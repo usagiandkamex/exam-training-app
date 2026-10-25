@@ -1,6 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import demo from '../data/exams/demo.ts'
+import dp300 from '../data/exams/dp-300.ts'
 import { createSession, getStats, isCorrect, nextQuestion, shuffle, submitAnswer } from './quiz.ts'
 
 test('shuffle preserves input and all items, with deterministic random injection', () => {
@@ -12,26 +12,26 @@ test('shuffle preserves input and all items, with deterministic random injection
 })
 
 test('session filters domains, limits questions, and shuffles choices without mutating the bank', () => {
-  const original = structuredClone(demo)
-  const session = createSession(demo, ['identity'], 3, () => 0)
+  const original = structuredClone(dp300)
+  const session = createSession(dp300, ['resources'], 3, () => 0)
   assert.equal(session.questions.length, 3)
-  assert.ok(session.questions.every((question) => question.domainId === 'identity'))
+  assert.ok(session.questions.every((question) => question.domainId === 'resources'))
   assert.equal(new Set(session.questions.map((question) => question.id)).size, 3)
-  assert.deepEqual(demo, original)
+  assert.deepEqual(dp300, original)
   assert.deepEqual(getStats(session), { answered: 0, correct: 0, accuracy: null })
-  assert.equal(createSession(demo, ['identity'], 100).questions.length, 5)
+  assert.equal(createSession(dp300, ['resources'], 100).questions.length, 100)
 })
 
 test('invalid or empty sessions cannot start', () => {
   for (const limit of [0, -1, NaN, Infinity, 1.5]) {
-    assert.throws(() => createSession(demo, ['identity'], limit))
+    assert.throws(() => createSession(dp300, ['resources'], limit))
   }
-  assert.throws(() => createSession(demo, [], 10))
-  assert.throws(() => createSession(demo, ['unknown'], 10))
+  assert.throws(() => createSession(dp300, [], 10))
+  assert.throws(() => createSession(dp300, ['unknown'], 10))
 })
 
 test('multiple answers use exact unordered ID matching, with no partial credit', () => {
-  const question = demo.questions.find((question) => question.correctChoiceIds.length === 2)!
+  const question = dp300.questions.find((question) => question.correctChoiceIds.length === 2)!
   assert.equal(isCorrect(question, [...question.correctChoiceIds].reverse()), true)
   assert.equal(isCorrect(question, [question.correctChoiceIds[0]]), false)
   assert.equal(isCorrect(question, [...question.correctChoiceIds, 'unknown']), false)
@@ -39,7 +39,7 @@ test('multiple answers use exact unordered ID matching, with no partial credit',
 })
 
 test('unanswered questions cannot be skipped and invalid answers are not graded', () => {
-  const session = createSession(demo, ['identity'], 1, () => 0)
+  const session = createSession(dp300, ['resources'], 1, () => 0)
   assert.equal(nextQuestion(session), session)
   for (const answer of [[], ['unknown'], ['a', 'a'], ['a', 'b', 'c', 'd']]) {
     assert.equal(submitAnswer(session, answer), session)
@@ -47,7 +47,7 @@ test('unanswered questions cannot be skipped and invalid answers are not graded'
 })
 
 test('grading is immutable and idempotent; finished sessions cannot be changed', () => {
-  const session = createSession(demo, ['identity', 'resilience'], 1)
+  const session = createSession(dp300, ['resources', 'security'], 1)
   const ids = [...session.questions[0].correctChoiceIds]
   const graded = submitAnswer(session, ids)
   ids[0] = 'changed'
@@ -63,7 +63,7 @@ test('grading is immutable and idempotent; finished sessions cannot be changed',
 })
 
 test('progress and accuracy count only submitted answers and persist on next question', () => {
-  let session = createSession(demo, ['identity'], 3, () => 0)
+  let session = createSession(dp300, ['resources'], 3, () => 0)
   session = submitAnswer(session, session.questions[0].correctChoiceIds)
   assert.deepEqual(getStats(session), { answered: 1, correct: 1, accuracy: 100 })
   session = nextQuestion(session)

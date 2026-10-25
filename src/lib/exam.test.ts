@@ -3,29 +3,49 @@ import assert from 'node:assert/strict'
 import type { Exam } from './exam.ts'
 import { validateCatalog, validateExam } from './exam.ts'
 import { exams } from '../data/catalog.ts'
-import demo from '../data/exams/demo.ts'
 
 function certification(): Exam {
-  const exam = structuredClone(demo)
-  exam.kind = 'certification'
-  exam.blueprint = {
-    url: 'https://learn.microsoft.com/example-guide',
-    reviewedOn: '2026-10-24',
-    questionCount: { min: 1, max: 2 },
+  const domains = [
+    { id: 'identity', name: 'Identity', weight: { min: 50, max: 50 } },
+    { id: 'resilience', name: 'Resilience', weight: { min: 50, max: 50 } },
+  ]
+  return {
+    id: 'fixture',
+    title: 'Test certification',
+    description: 'Test fixture; not a published certification.',
+    kind: 'certification',
+    authorship: 'original',
+    officialHosts: ['learn.microsoft.com'],
+    blueprint: {
+      url: 'https://learn.microsoft.com/example-guide',
+      reviewedOn: '2026-10-24',
+      questionCount: { min: 1, max: 2 },
+    },
+    usageReview: {
+      url: 'https://learn.microsoft.com/example-policy',
+      reviewedOn: '2026-10-24',
+      notes: 'Test fixture; not a published certification.',
+    },
+    domains,
+    questions: Array.from({ length: 10 }, (_, index) => {
+      const domainId = index < 5 ? 'identity' : 'resilience'
+      return {
+        id: `fixture-${index}`,
+        domainId,
+        prompt: `Question ${index}`,
+        choices: ['a', 'b', 'c', 'd'].map((id) => ({ id, text: `Choice ${id}` })),
+        correctChoiceIds: index === 0 ? ['a', 'b'] : ['a'],
+        explanation: 'Explanation.',
+        references: [{ title: 'Reference', url: 'https://learn.microsoft.com/example' }],
+      }
+    }),
   }
-  exam.usageReview = {
-    url: 'https://learn.microsoft.com/example-policy',
-    reviewedOn: '2026-10-24',
-    notes: 'Test fixture; not a published certification.',
-  }
-  exam.domains.forEach((domain) => { domain.weight = { min: 50, max: 50 } })
-  return exam
 }
 
 function certificationWithQuestionCounts(firstDomainCount: number, secondDomainCount: number): Exam {
   const exam = certification()
   exam.questions = Array.from({ length: firstDomainCount + secondDomainCount }, (_, index) => {
-    const question = structuredClone(demo.questions[index % demo.questions.length])
+    const question = structuredClone(exam.questions[index % exam.questions.length])
     question.id = `boundary-${index}`
     question.domainId = index < firstDomainCount ? exam.domains[0].id : exam.domains[1].id
     return question
@@ -33,14 +53,13 @@ function certificationWithQuestionCounts(firstDomainCount: number, secondDomainC
   return exam
 }
 
-test('every published bank and the demo pass content validation', () => {
+test('published certification banks pass content validation and the demo is absent', () => {
   assert.deepEqual(validateCatalog(exams), [])
-  assert.equal(demo.kind, 'demo')
-  assert.equal(demo.blueprint, null)
+  assert.deepEqual(exams.map((exam) => exam.id), ['dp-300', 'ai-200'])
 })
 
 test('Japanese question banks explicitly request Japanese Microsoft Learn reference pages', () => {
-  for (const id of ['demo', 'dp-300', 'ai-200']) {
+  for (const id of ['dp-300', 'ai-200']) {
     const exam = exams.find((item) => item.id === id)!
     for (const question of exam.questions) {
       for (const ref of question.references) {
@@ -55,7 +74,8 @@ test('Japanese question banks explicitly request Japanese Microsoft Learn refere
 
 test('catalog rejects an empty list and duplicate exam IDs', () => {
   assert.ok(validateCatalog([]).length > 0)
-  assert.ok(validateCatalog([demo, demo]).some((error) => error.includes('試験ID')))
+  const exam = certification()
+  assert.ok(validateCatalog([exam, exam]).some((error) => error.includes('試験ID')))
 })
 
 test('certification requires 10x the maximum official count, not the minimum', () => {
@@ -116,7 +136,7 @@ test('invalid domain ranges and impossible total percentages are rejected', () =
 })
 
 test('duplicate IDs, unknown domains, invalid answers and blank content are rejected', () => {
-  const exam = structuredClone(demo)
+  const exam = certification()
   exam.questions[1].id = exam.questions[0].id
   exam.domains[1].id = exam.domains[0].id
   const question = exam.questions[0]
@@ -131,7 +151,7 @@ test('duplicate IDs, unknown domains, invalid answers and blank content are reje
 })
 
 test('empty banks, empty choices, missing sources and all-correct choices are rejected', () => {
-  const exam = structuredClone(demo)
+  const exam = certification()
   exam.questions[0].choices = []
   exam.questions[1].references = []
   exam.questions[2].correctChoiceIds = exam.questions[2].choices.map((choice) => choice.id)
@@ -158,7 +178,7 @@ test('references must use exact allowlisted official HTTPS hosts, without creden
     'https://learn.microsoft.com:8443/',
     'not a URL',
   ]) {
-    const exam = structuredClone(demo)
+    const exam = certification()
     exam.questions[0].references[0].url = url
     assert.ok(validateExam(exam).some((error) => error.includes('公式HTTPS')), url)
   }
