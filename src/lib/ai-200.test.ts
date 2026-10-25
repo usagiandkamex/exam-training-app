@@ -5,9 +5,8 @@ import ai200 from '../data/exams/ai-200.ts'
 import { validateExam } from './exam.ts'
 import { createSession, getStats, isCorrect, nextQuestion, submitAnswer } from './quiz.ts'
 
-test('AI-200 is registered as an original certification alongside the existing banks', () => {
+test('AI-200 is registered as an original certification alongside DP-300', () => {
   assert.ok(exams.includes(ai200))
-  assert.ok(exams.some((exam) => exam.id === 'demo' && exam.kind === 'demo'))
   assert.ok(exams.some((exam) => exam.id === 'dp-300' && exam.kind === 'certification'))
   assert.equal(ai200.id, 'ai-200')
   assert.equal(ai200.kind, 'certification')

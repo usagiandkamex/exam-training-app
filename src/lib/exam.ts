@@ -23,7 +23,7 @@ export interface Exam {
   id: string
   title: string
   description: string
-  kind: 'demo' | 'certification'
+  kind: 'certification'
   authorship: 'original'
   officialHosts: string[]
   blueprint: {
@@ -58,7 +58,7 @@ export function validateExam(exam: Exam): string[] {
     if (!condition) errors.push(`${exam.id}: ${message}`)
   }
   require(Boolean(exam.id.trim() && exam.title.trim() && exam.description.trim()), '基本情報が必要です')
-  require(exam.kind === 'demo' || exam.kind === 'certification', '試験種別が不正です')
+  require(exam.kind === 'certification', '試験種別が不正です')
   require(exam.authorship === 'original', '独自作問のみ登録できます')
   require(exam.officialHosts.length > 0, '公式参照先のホストが必要です')
   require(exam.domains.length > 0, '分野が必要です')
