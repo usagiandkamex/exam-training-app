@@ -11,7 +11,7 @@ GitHub Pagesで公開する、非公式の選択式クイズアプリです。Re
 - 現在の問題数、回答数、正解数、回答済み問題の正答率、終了時の分野別結果と誤答の復習を表示。
 - スマートフォン・PC向けのレスポンシブUI。キーボード操作、読み上げ通知、動きを減らす設定にも対応。
 
-**DP-300「Microsoft Azure SQL ソリューションの管理」の日本語・非公式問題集600問と、「IT基礎・体験デモ」10問を公開しています。** Azure・AWS・CISSPなどの試験は[追加リクエスト](https://github.com/usagiandkamex/exam-training-app/issues/new?template=exam-request.yml)をもとに追加します。
+**DP-300「Microsoft Azure SQL ソリューションの管理」とAI-200「Azure での AI クラウド ソリューションの開発」の日本語・非公式問題集を各600問と、「IT基礎・体験デモ」10問を公開しています。** Azure・AWS・CISSPなどの試験は[追加リクエスト](https://github.com/usagiandkamex/exam-training-app/issues/new?template=exam-request.yml)をもとに追加します。
 
 DP-300は[公式学習ガイド](https://learn.microsoft.com/ja-jp/credentials/certifications/resources/study-guides/dp-300)で公開されている**2026年10月27日適用版**を対象にしています（確認日：2026-10-25、確認時点では適用予定）。分野と収録数は次のとおりです。
 
@@ -24,6 +24,17 @@ DP-300は[公式学習ガイド](https://learn.microsoft.com/ja-jp/credentials/c
 | 高可用性とディザスター リカバリー（HA/DR）の環境を計画して構成する | 20〜25% | 140問 |
 
 画面の40〜60問は[Microsoft認定試験全般の公式目安](https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience)であり、DP-300固有の固定問題数・上限ではありません（確認日：2026-10-25）。その目安の上限60問を収録数の計画に使い、10倍の600問を用意しています。公式問題・公式練習問題の転載ではなく、技術資料を根拠にした独自作問です。本番の形式・難易度・合否を再現・保証するものではありません。
+
+AI-200は[公式学習ガイド](https://learn.microsoft.com/ja-jp/credentials/certifications/resources/study-guides/ai-200)の**2026年10月7日版**を対象にしています（確認日：2026-10-25）。認定資格は[Azure AI クラウド 開発者アソシエイト](https://learn.microsoft.com/ja-jp/credentials/certifications/azure-ai-cloud-developer-associate/)です。
+
+| 分野 | 公式概要の出題比率 | 収録数 |
+| --- | --- | --- |
+| Azure でコンテナー化されたソリューションを開発する | 20〜25% | 150問 |
+| Azure データ管理サービスを使用して AI ソリューションを開発する | 30〜35%（下記注記） | 180問 |
+| Azure サービスに接続して使用する | 20〜25% | 135問 |
+| Azure ソリューションのセキュリティ保護、監視、トラブルシューティング | 20〜25% | 135問 |
+
+データ管理分野は、日英の公式ガイドとも概要では30〜35%、詳細見出しでは25〜30%と不一致があります。変更履歴には比率の増加が記載されていますが、不一致の解消は未確認です。画面には概要の範囲を表示し、問題集の構成は両方を満たす30%（180/600問）にしています。AI-200固有の問題数も確認できないため、上記のMicrosoft認定試験全般の目安40〜60問を計画に使用して600問を用意しています。AI-200の固定問題数・上限や、日本語での本番試験の提供を保証するものではありません。公開技術資料からの独自作問であり、マージ前には人による内容・権利レビューが必要です。
 
 回答はメモリ上だけに保持し、再読み込みや終了で消えます。学習履歴の送信・永続保存、広告、アクセス解析はありません。GitHub Pagesによるアクセス情報の取り扱いは[GitHubのプライバシー声明](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement)を参照してください。
 
