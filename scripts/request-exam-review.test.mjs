@@ -88,6 +88,21 @@ test('paginates, ignores pull requests, and does not restart an assigned issue',
   assert.match(mock.calls[2].url, /page=2/)
 })
 
+test('accepts the returned Copilot login while requesting assignment with the bot login', async () => {
+  const assigned = { ...issue, assignees: [{ login: 'Copilot' }] }
+  const mock = api([{ data: creator }, { data: [] }, { data: issue }, { data: assigned }])
+  assert.deepEqual(await requestExamReview({ ...options, fetchImpl: mock.fetchImpl }), assigned)
+  assert.equal(mock.calls.length, 4)
+  assert.deepEqual(mock.calls[3].body, { assignees: [copilot.login] })
+})
+
+test('does not restart an existing issue assigned to the returned Copilot login', async () => {
+  const assigned = { ...issue, assignees: [{ login: 'Copilot' }] }
+  const mock = api([{ data: creator }, { data: [assigned] }])
+  assert.deepEqual(await requestExamReview({ ...options, fetchImpl: mock.fetchImpl }), assigned)
+  assert.equal(mock.calls.length, 2)
+})
+
 test('reuses an unassigned issue after a partial failure instead of creating another', async () => {
   const mock = api([{ data: creator }, { data: [issue] }, { data: { ...issue, assignees: [copilot] } }])
   await requestExamReview({ ...options, fetchImpl: mock.fetchImpl })
@@ -176,6 +191,10 @@ test('API failures at authentication, listing, creation or assignment fail witho
 })
 
 test('silent assignment rejection is a failure even with a successful HTTP response', async () => {
-  const mock = api([{ data: creator }, { data: [issue] }, { data: issue }])
-  await assert.rejects(requestExamReview({ ...options, fetchImpl: mock.fetchImpl }), /Copilotを割り当てられません/)
+  for (const assignees of [[], [{ login: 'Not-Copilot' }]]) {
+    const unassigned = { ...issue, assignees }
+    const mock = api([{ data: creator }, { data: [unassigned] }, { data: unassigned }])
+    await assert.rejects(requestExamReview({ ...options, fetchImpl: mock.fetchImpl }), /Copilotを割り当てられません/)
+    assert.equal(mock.calls.length, 3)
+  }
 })

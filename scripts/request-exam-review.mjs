@@ -2,6 +2,7 @@ import { pathToFileURL } from 'node:url'
 import { exams } from '../src/data/catalog.ts'
 
 const copilot = 'copilot-swe-agent[bot]'
+const isCopilot = (user) => user.login === copilot || user.login === 'Copilot'
 
 export function buildReviewIssue(catalog, now) {
   const sunday = new Date(now.getTime() + 9 * 60 * 60 * 1000)
@@ -85,13 +86,13 @@ export async function requestExamReview({
   if (!issue) {
     issue = await request(issuesPath, 'POST', { title: review.title, body: review.body })
   }
-  if (issue.state === 'closed' || issue.assignees.some((user) => user.login === copilot)) {
+  if (issue.state === 'closed' || issue.assignees.some(isCopilot)) {
     return issue
   }
   const assigned = await request(`${issuesPath}/${issue.number}/assignees`, 'POST', {
     assignees: [copilot],
   })
-  if (!assigned.assignees.some((user) => user.login === copilot)) {
+  if (!assigned.assignees.some(isCopilot)) {
     throw new Error('Copilotを割り当てられませんでした。トークン権限とcloud agentの有効化を確認してください')
   }
   return assigned
