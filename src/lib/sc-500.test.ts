@@ -36,8 +36,8 @@ test('SC-500 distinguishes verification date, general exam count and question la
   assert.equal(sc500.usageReview?.reviewedOn, '2026-10-25')
   assert.ok(sc500.usageReview)
   assert.equal(sc500.usageReview.url, 'https://learn.microsoft.com/ja-jp/credentials/support/certification-exam-candidate-agreement')
-  assert.ok(sc500.usageReview.notes.split(/\s+/).includes(
-    'https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience'))
+  assert.ok(sc500.usageReview.notes.split(/\s+/).some((token) =>
+    token === 'https://learn.microsoft.com/en-us/credentials/support/exam-duration-exam-experience'))
   for (const text of ['Microsoft認定試験全般', 'SC-500', '改訂日・適用日', '日本語', '保証しません']) {
     assert.ok(sc500.description.includes(text), text)
   }
